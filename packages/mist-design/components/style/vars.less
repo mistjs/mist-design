@@ -1,0 +1,47 @@
+:root{
+  // 色调
+  --primary-color:#13c2c2;
+
+  // 动画
+  --animate-ease-base-out: cubic-bezier(0.7, 0.3, 0.1, 1);
+  --animate-ease-base-in: cubic-bezier(0.9, 0, 0.3, 0.7);
+  --animate-ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --animate-ease-in: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  --animate-ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --animate-ease-out-back: cubic-bezier(0.12, 0.4, 0.29, 1.46);
+  --animate-ease-in-back: cubic-bezier(0.71, -0.46, 0.88, 0.6);
+  --animate-ease-in-out-back: cubic-bezier(0.71, -0.46, 0.29, 1.46);
+  --animate-ease-out-circ: cubic-bezier(0.08, 0.82, 0.17, 1);
+  --animate-ease-in-circ: cubic-bezier(0.6, 0.04, 0.98, 0.34);
+  --animate-ease-in-out-circ: cubic-bezier(0.78, 0.14, 0.15, 0.86);
+  --animate-ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+  --animate-ease-in-quint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+  --animate-ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1);
+
+  // 水波纹效果
+  --wave-animation-width: 6px;
+}
+
+
+@prefixCls: mist;
+
+@primary-color: var(--primary-color);
+
+// 水波纹效果
+@wave-animation-width:var(--wave-animation-width);
+
+// 动画效果
+@ease-base-out:var(--animate-ease-base-out);
+@ease-base-in: var(--animate-ease-base-in);
+@ease-out: var(--animate-ease-out);
+@ease-in: var(--animate-ease-in);
+@ease-in-out: var(--animate-ease-in-out);
+@ease-out-back: var(--animate-ease-out-back);
+@ease-in-back: var(--animate-ease-in-back);
+@ease-in-out-back: var(--animate-ease-in-out-back);
+@ease-out-circ: var(--animate-ease-out-circ);
+@ease-in-circ: var(--animate-ease-in-circ);
+@ease-in-out-circ: var(--animate-ease-in-out-circ);
+@ease-out-quint: var(--animate-ease-out-quint);
+@ease-in-quint: var(--animate-ease-in-quint);
+@ease-in-out-quint: var(--animate-ease-in-out-quint);
