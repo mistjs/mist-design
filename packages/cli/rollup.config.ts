@@ -6,6 +6,7 @@ import json from "@rollup/plugin-json";
 import commonjs from "@rollup/plugin-commonjs";
 import pkg from "./package.json";
 import typescript from "rollup-plugin-typescript2";
+import alias from "@rollup/plugin-alias";
 const external = Object.keys(pkg.dependencies);
 export default defineConfig({
   input: ["lib/**/*.ts"],
@@ -21,17 +22,19 @@ export default defineConfig({
     },
   ],
   plugins: [
+    alias({
+      entries: [],
+    }),
     multiPlugin({ relative: "lib" }),
+    nodeResolve(),
+    commonjs(),
+    json(),
     typescript({
       tsconfigOverride: {
-        include: ["lib/**/*.ts"],
         compilerOptions: {
           declaration: true,
         },
       },
     }),
-    nodeResolve(),
-    commonjs(),
-    json(),
   ],
 });
