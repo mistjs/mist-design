@@ -14,9 +14,11 @@
     "packages/*"
   ],
   "dependencies": {
-    "vue": "^3.2.27"
+    "vue": "^3.2.27",
+    "mist-design": "workspace:*"
   },
   "devDependencies": {
+    "@mist/cli": "workspace:*",
     "@rushstack/eslint-patch": "^1.1.0",
     "@types/node": "^16.11.21",
     "@vitejs/plugin-vue": "^2.0.1",

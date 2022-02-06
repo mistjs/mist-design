@@ -1,0 +1,13 @@
+{
+  "name": "@mist/use",
+  "version": "1.0.0",
+  "description": "mist hooks",
+  "main": "index.js",
+  "scripts": {
+    "dev": "",
+    "build": ""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
