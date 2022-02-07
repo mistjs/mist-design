@@ -13,13 +13,13 @@ importers:
       '@vue/eslint-config-typescript': ^10.0.0
       '@vue/test-utils': ^2.0.0-rc.18
       '@vuepress/plugin-search': ^2.0.0-beta.35
+      '@vuepress/theme-default': ^2.0.0-beta.35
       '@yanyu-fe/vuepress-plugin-code-block': ^0.0.11
       cypress: ^9.3.1
       eslint: ^8.5.0
       eslint-plugin-cypress: ^2.12.1
       eslint-plugin-vue: ^8.2.0
       jsdom: ^19.0.0
-      mist-ui: workspace:*
       prettier: ^2.5.1
       start-server-and-test: ^1.14.0
       typescript: ~4.5.4
@@ -30,7 +30,6 @@ importers:
       vuepress: ^2.0.0-beta.35
       webpack: ^5.68.0
     dependencies:
-      mist-ui: link:packages/mist-ui
       vue: 3.2.29
     devDependencies:
       '@mist/cli': link:packages/cli
@@ -42,6 +41,7 @@ importers:
       '@vue/eslint-config-typescript': 10.0.0_e5412bbf3f6b50aa731580ef49faf984
       '@vue/test-utils': 2.0.0-rc.18_vue@3.2.29
       '@vuepress/plugin-search': 2.0.0-beta.35
+      '@vuepress/theme-default': 2.0.0-beta.35_webpack@5.68.0
       '@yanyu-fe/vuepress-plugin-code-block': 0.0.11_webpack@5.68.0
       cypress: 9.3.1
       eslint: 8.8.0

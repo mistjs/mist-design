@@ -1,6 +1,9 @@
 import { defineUserConfig } from "vuepress"
 import type { ViteBundlerOptions,DefaultThemeOptions } from "vuepress"
 import vueJsx from "@vitejs/plugin-vue-jsx";
+import { resolve } from "path"
+import * as navbar from "./configs/navbar";
+import * as sidebar from "./configs/sidebar"
 export default defineUserConfig<DefaultThemeOptions,ViteBundlerOptions>({
     locales:{
         '/':{
@@ -16,6 +19,12 @@ export default defineUserConfig<DefaultThemeOptions,ViteBundlerOptions>({
                     strict: false,
                 },
             },
+            resolve:{
+                alias:{
+                    "mist-ui":resolve(__dirname,"../../packages/mist-ui/components"),
+                    "mist-ui/es":resolve(__dirname,"../../packages/mist-ui/components")
+                },
+            },
             plugins: [vueJsx()],
         },
     },
@@ -27,6 +36,8 @@ export default defineUserConfig<DefaultThemeOptions,ViteBundlerOptions>({
                 lastUpdatedText:"最后更新时间",
                 contributorsText:"贡献者",
                 editLinkText: '在 GitHub 上编辑此页',
+                navbar:navbar.zh,
+                sidebar:sidebar.zh
             },
         }
     },
