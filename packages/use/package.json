@@ -7,6 +7,17 @@
     "dev": "",
     "build": ""
   },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mistjs/mist-design.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mistjs/mist-design/issues"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC"

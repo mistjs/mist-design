@@ -3,6 +3,7 @@ export type BuildType = "lib" | "ui";
 export interface BaseConfig {
   type: BuildType;
   config: CompileConfig;
+  isOnly: boolean;
 }
 
 export interface CompileConfig {
@@ -17,4 +18,5 @@ export interface CompileConfig {
     | "cjs,umd"
     | "esm,cjs,umd";
   watch: boolean;
+  name: string;
 }

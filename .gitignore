@@ -14,6 +14,9 @@ node_modules
 dist
 dist-ssr
 *.local
+packages/**/dist
+packages/mist-ui/es
+packages/mist-ui/lib
 
 /cypress/videos/
 /cypress/screenshots/

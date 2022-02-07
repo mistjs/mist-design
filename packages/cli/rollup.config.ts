@@ -10,7 +10,13 @@ import alias from "@rollup/plugin-alias";
 const external = Object.keys(pkg.dependencies);
 export default defineConfig({
   input: ["lib/**/*.ts"],
-  external: [...external, "fs/promises", "path", "process"],
+  external: [
+    ...external,
+    "rollup-plugin-vue",
+    "fs/promises",
+    "path",
+    "process",
+  ],
   output: [
     {
       dir: "dist/es",

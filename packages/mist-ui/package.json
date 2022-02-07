@@ -1,0 +1,56 @@
+{
+  "name": "mist-ui",
+  "version": "1.0.0",
+  "description": "this is mist design ui",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
+  "unpkg": "dist/MistUI.min.js",
+  "jsdelivr": "dist/MistUI.min.js",
+  "keywords": [
+    "vue",
+    "vue3",
+    "vue-next",
+    "MistUI",
+    "mist-desgin",
+    "mist-ui",
+    "typescript"
+  ],
+  "scripts": {
+    "build": "mist compile ui -d components -n MistUI"
+  },
+  "author": "aibayanyu",
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^3.2.29"
+  },
+  "files": [
+    "es",
+    "lib",
+    "dist"
+  ],
+  "sideEffects": [
+    "*.vue",
+    "dist/*",
+    "site/*",
+    "es/**/style/**",
+    "lib/**/style/**"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mistjs/mist-design.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mistjs/mist-design/issues"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.21",
+    "less": "^4.1.2",
+    "typescript": "~4.5.5",
+    "@mist/cli": "workspace:*"
+  }
+}

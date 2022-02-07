@@ -18,3 +18,9 @@ async function findConfigFileNameInCwd(): Promise<string> {
   }
   return `${DEFAULT_CONFIG_BASE}.js`;
 }
+
+export const globalLib = {
+  vue: "Vue",
+  lodash: "_",
+  "lodash-es": "_",
+};

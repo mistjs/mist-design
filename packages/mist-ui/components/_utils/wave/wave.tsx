@@ -6,7 +6,7 @@ import {
   onMounted,
   ref,
 } from "vue";
-import "./wave.less";
+import "./style";
 import { ComponentInternalInstance } from "vue";
 import { findDOMNode, isHidden, isNotGrey } from "./hooks/tools";
 // @ts-ignore

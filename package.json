@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "build:ui": "pnpm build --filter=mist-ui",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "keywords": [],
   "author": "aibayanyu",
@@ -14,8 +17,8 @@
     "packages/*"
   ],
   "dependencies": {
-    "vue": "^3.2.27",
-    "mist-design": "workspace:*"
+    "mist-ui": "workspace:*",
+    "vue": "^3.2.27"
   },
   "devDependencies": {
     "@mist/cli": "workspace:*",
@@ -26,6 +29,8 @@
     "@vue/eslint-config-prettier": "^7.0.0",
     "@vue/eslint-config-typescript": "^10.0.0",
     "@vue/test-utils": "^2.0.0-rc.18",
+    "@vuepress/plugin-search": "^2.0.0-beta.35",
+    "@yanyu-fe/vuepress-plugin-code-block": "^0.0.11",
     "cypress": "^9.3.1",
     "eslint": "^8.5.0",
     "eslint-plugin-cypress": "^2.12.1",
@@ -36,6 +41,8 @@
     "typescript": "~4.5.4",
     "vite": "^2.7.13",
     "vitest": "^0.1.23",
-    "vue-tsc": "^0.29.8"
+    "vue-tsc": "^0.29.8",
+    "vuepress": "^2.0.0-beta.35",
+    "webpack": "^5.68.0"
   }
 }

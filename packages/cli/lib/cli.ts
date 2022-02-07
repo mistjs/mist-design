@@ -16,6 +16,7 @@ program
   .description("项目编译工具")
   .option("-d, --dir <dir>", "打包项目的输入的目录", "src")
   .option("-o, --out <out>", "打包项目输出的目录", "dist")
+  .option("-n, --name <name>", "打包项目输出的目录", "index")
   .option(
     "-f, --format <format>",
     "打包输出的类型，支持类型有esm,cjs,umd",

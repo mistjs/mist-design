@@ -14,9 +14,13 @@ function cleanup(id: number) {
   rafIds.delete(id);
 }
 
-export default function wrapperRaf(callback: () => void, times = 1): number {
+export default function wrapperRaf(
+  callback: () => void,
+  times?: number
+): number {
   rafUUID += 1;
   const id = rafUUID;
+  if (!times) times = 1;
 
   function callRef(leftTimes: number) {
     if (leftTimes === 0) {
