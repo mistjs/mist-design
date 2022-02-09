@@ -1,2 +1,2 @@
 import "../../../style";
-import "./wave.less";
+import "./index.less";

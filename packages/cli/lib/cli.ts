@@ -1,15 +1,17 @@
 import { Command } from "commander";
 import * as process from "process";
-// import pkg from "../package.json";
+import pkg from "../package.json";
+
 import { compile } from "./plugins/compile";
+import { build } from "./plugins/build";
 const program = new Command("mist");
-const pkg = {
-  version: "1.0.0",
-};
+
 program
   .usage("<command> [options]")
   .helpOption("-h,--help", "mist cli 帮助文档")
   .version(pkg.version, "-v,--version", "查看版本信息");
+
+program.command("ui").description("项目编译").action(build);
 
 program
   .command("compile [type]")

@@ -14,8 +14,12 @@ export default defineConfig({
     ...external,
     "rollup-plugin-vue",
     "fs/promises",
+    "fs",
     "path",
     "process",
+    "url",
+    "vue/compiler-sfc",
+    "module",
   ],
   output: [
     {

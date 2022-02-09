@@ -6,12 +6,11 @@
     "moduleResolution": "node",
     "isolatedModules": true,
     "strict": true,
-    "jsx": "preserve",
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
+    "lib": ["esnext"],
     "skipLibCheck": true
   },
-  "include": ["lib/**/*"]
+  "include": ["lib/**/*","module.d.ts"]
 }

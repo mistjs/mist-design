@@ -17,7 +17,8 @@
     "typescript"
   ],
   "scripts": {
-    "build": "mist compile ui -d components -n MistUI"
+    "build": "mist compile ui -d components -n MistUI",
+    "build:ui": "mist ui"
   },
   "author": "aibayanyu",
   "license": "MIT",
