@@ -13,6 +13,7 @@ export const STYLE_REGEXP = /\.(css|less|scss)$/;
 export const SCRIPT_REGEXP = /\.(js|ts|jsx|tsx)$/;
 export const JSX_REGEXP = /\.(j|t)sx$/;
 export const ENTRY_EXTS = ["js", "ts", "tsx", "jsx", "vue"];
+export const STYLE_TS_FILE = new RegExp("style/index.ts$");
 
 export function removeExt(path: string) {
   return path.replace(".js", "");
@@ -52,6 +53,7 @@ export const isSfc = (path: string) => SFC_REGEXP.test(path);
 export const isStyle = (path: string) => STYLE_REGEXP.test(path);
 export const isScript = (path: string) => SCRIPT_REGEXP.test(path);
 export const isJsx = (path: string) => JSX_REGEXP.test(path);
+export const isStyleFileTS = (path: string) => STYLE_TS_FILE.test(path);
 
 const camelizeRE = /-(\w)/g;
 const pascalizeRE = /(\w)(\w*)/g;

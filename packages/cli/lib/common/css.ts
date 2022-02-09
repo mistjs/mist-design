@@ -25,11 +25,36 @@ export function getCssBaseFile() {
   return null;
 }
 
-const IMPORT_STYLE_RE = /import\s+?(?:(?:".*?")|(?:'.*?'))[\s]*?(?:;|$|)/g;
+export const IMPORT_STYLE_RE =
+  /import\s+?(?:(?:".*?")|(?:'.*?'))[\s]*?(?:;|$|)/g;
+
+export const IMPORT_STYLE_PATH_RE =
+  /import\s+?(?:(?:"(.*?)")|(?:'(.*?)'))[\s]*?(?:;|$|)/g;
 
 // "import 'a.less';" => "import 'a.css';"
 export function replaceCSSImportExt(code: string) {
   return code.replace(IMPORT_STYLE_RE, (str) =>
     str.replace(`.${CSS_LANG}`, ".css")
   );
+}
+
+export function replaceCSSImportCSS(
+  code: string,
+  suffixStr?: string,
+  replaceStr?: string
+) {
+  return code.replace(IMPORT_STYLE_RE, (str) => {
+    if (suffixStr && replaceStr) {
+      const importCode = IMPORT_STYLE_PATH_RE.exec(str);
+      // console.log(importCode);
+      if (importCode && importCode.length > 1) {
+        const replaceCode = importCode[1];
+        if (replaceCode.endsWith(suffixStr)) {
+          // console.log(replaceCode, `${replaceCode}/${replaceStr}`);
+          return str.replace(replaceCode, `${replaceCode}/${replaceStr}`);
+        }
+      }
+    }
+    return str.replace(`.${CSS_LANG}`, ".css");
+  });
 }

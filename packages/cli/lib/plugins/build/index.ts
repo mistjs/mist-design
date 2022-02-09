@@ -15,6 +15,7 @@ import {
   isScript,
   isSfc,
   isStyle,
+  isStyleFileTS,
   isTestDir,
 } from "../../common";
 import { compileSfc } from "../../compiler/compile-sfc";
@@ -22,6 +23,7 @@ import { compileScript } from "../../compiler/compile-script";
 import { compileStyle } from "../../compiler/compile-style";
 import { Format } from "esbuild";
 import { compileBundles } from "../../compiler/compile-bundles";
+import { genCssInJs } from "../../compiler/gen-css";
 const clear = () => {
   rimraf.sync("dist");
   rimraf.sync("es");
@@ -39,6 +41,9 @@ const preCompileDir = async (dir: string) => {
       const filePath = join(dir, filename);
       if (isDemoDir(filePath) || isTestDir(filePath)) {
         return rimraf.sync(filePath);
+      }
+      if (isStyleFileTS(filePath)) {
+        return genCssInJs(filePath);
       }
       if (isDir(filePath)) {
         return preCompileDir(filePath);

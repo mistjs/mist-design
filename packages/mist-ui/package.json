@@ -16,6 +16,20 @@
     "mist-ui",
     "typescript"
   ],
+  "exports": {
+    ".": {
+      "node": {
+        "import": "./lib/ssr.mjs",
+        "require": "./lib/ssr.js"
+      },
+      "import": "./es/index.js",
+      "require": "./lib/index.js"
+    },
+    "./es": "./es/index.js",
+    "./lib": "./dist/MistUI.cjs.js",
+    "./es/": "./es/",
+    "./lib/": "./lib/"
+  },
   "scripts": {
     "build": "mist compile ui -d components -n MistUI",
     "build:ui": "mist ui"
@@ -31,11 +45,10 @@
     "dist"
   ],
   "sideEffects": [
-    "*.vue",
-    "dist/*",
-    "site/*",
-    "es/**/style/**",
-    "lib/**/style/**"
+    "es/**/style/*",
+    "lib/**/style/*",
+    "*.css",
+    "*.less"
   ],
   "publishConfig": {
     "access": "public",
