@@ -1,7 +1,14 @@
 @import "../../_utils/wave/style/wave";
+@import "mixin";
 @btn-prefix-cls:~'@{prefixCls}-btn';
 
 // ghost按钮
+@btn-ghost-gb: transparent;
+@btn-ghost-color: @text-color;
+@btn-ghost-border: @border-color-base;
 
-@btn-ghost-gb:transparent;
-//@btn-ghost-color:
+// Button Styles
+.@{btn-prefix-cls}{
+  line-height: @btn-line-height;
+
+}

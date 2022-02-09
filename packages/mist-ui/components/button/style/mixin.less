@@ -1,0 +1,56 @@
+@import "../../style/index";
+.button-size(@height; @padding-horizontal; @font-size; @border-radius) {
+  @padding-vertical: max(
+          (round(((@height - @font-size * @line-height-base) / 2) * 10) / 10) - @border-width-base,
+          0
+  );
+  height: @height;
+  padding: @padding-vertical @padding-horizontal;
+  font-size: @font-size;
+  border-radius: @border-radius;
+}
+.btn(){
+  position: relative;
+  display: inline-block;
+  font-weight:@btn-font-weight;
+  white-space: nowrap;
+  text-align: center;
+  background-image:none;
+  border: @btn-border-width @btn-border-style transparent;
+  box-shadow: @btn-shadow;
+  cursor: pointer;
+  transition: all .3s @ease-in-out;
+  user-select: none;
+  touch-action: manipulation;
+  .button-size(@btn-height-base;@btn-padding-horizontal-base;@font-size-base;@btn-border-radius-base);
+  //> .@{iconfont-css-prefix}{
+  //  line-height: 1;
+  //}
+  &,&:active,&:focus{
+    outline: 0;
+  }
+  &:not([disabled]):hover{
+    text-decoration: none;
+  }
+  &:not([disabled]):active{
+    outline: 0;
+    box-shadow: none;
+  }
+  &[disabled]{
+    cursor: not-allowed;
+    >*{
+      pointer-events: none;
+    }
+  }
+  &-lg {
+    .button-size(
+            @btn-height-lg; @btn-padding-horizontal-lg; @btn-font-size-lg; @btn-border-radius-base
+    );
+  }
+
+  &-sm {
+    .button-size(
+            @btn-height-sm; @btn-padding-horizontal-sm; @btn-font-size-sm; @btn-border-radius-sm
+    );
+  }
+}
