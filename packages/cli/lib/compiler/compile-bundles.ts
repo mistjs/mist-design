@@ -1,12 +1,13 @@
 import fse from "fs-extra";
 import { join } from "path";
 import { build } from "vite";
-import { getPackageJson, LIB_DIR } from "../common/constant";
+import { getMistBuildName, getPackageJson, LIB_DIR } from "../common/constant";
 import { getViteConfigForPackage } from "../config/vite.package";
+import { getViteStyleConfigForPackage } from "../config/vite.style";
 
 // generate entry file for nuxt
 async function genEntryForSSR() {
-  const name = "MistUI";
+  const name = getMistBuildName();
 
   const cjsPath = join(LIB_DIR, "ssr.js");
   const mjsPath = join(LIB_DIR, "ssr.mjs");
@@ -59,6 +60,11 @@ export async function compileBundles() {
       formats: ["es", "cjs"],
       external: ["vue", ...externals],
     }),
+    // getViteStyleConfigForPackage({
+    //   minify: true,
+    //   external: ["vue", ...externals],
+    //   formats: ["cjs"],
+    // }),
   ];
 
   await Promise.all(configs.map((config) => build(config)));

@@ -9,6 +9,7 @@ export async function compileLess(filePath: string) {
   const { css } = await less.render(source, {
     filename: filePath,
     paths: [join(CWD, "node_modules")],
+    javascriptEnabled: true,
   });
   return css;
 }

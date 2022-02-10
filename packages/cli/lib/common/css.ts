@@ -47,7 +47,7 @@ export function replaceCSSImportCSS(
     if (suffixStr && replaceStr) {
       const importCode = IMPORT_STYLE_PATH_RE.exec(str);
       // console.log(importCode);
-      if (importCode && importCode.length > 1) {
+      if (importCode && importCode.length > 0) {
         const replaceCode = importCode[1];
         if (replaceCode.endsWith(suffixStr)) {
           // console.log(replaceCode, `${replaceCode}/${replaceStr}`);

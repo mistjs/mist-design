@@ -1,6 +1,7 @@
 import { existsSync, readFileSync } from "fs";
 import { fileURLToPath } from "url";
-import { join, dirname } from "path";
+import { join, dirname, isAbsolute } from "path";
+import minimist from "minimist";
 
 function findRootDir(dir: string): string {
   if (existsSync(join(dir, "vant.config.mjs"))) {
@@ -21,6 +22,7 @@ export const ROOT = CWD;
 export const ES_DIR = join(ROOT, "es");
 export const LIB_DIR = join(ROOT, "lib");
 export const DIST_DIR = join(ROOT, "dist");
+
 export const DOCS_DIR = join(ROOT, "docs");
 export const VETUR_DIR = join(ROOT, "vetur");
 export const SITE_DIST_DIR = join(ROOT, "site-dist");
@@ -52,20 +54,42 @@ export function getPackageJson() {
   return JSON.parse(rawJson);
 }
 
-// function getSrcDir() {
-//   const vantConfig = getVantConfig();
-//   const srcDir = vantConfig.build?.srcDir;
-//
-//   if (srcDir) {
-//     if (isAbsolute(srcDir)) {
-//       return srcDir;
-//     }
-//
-//     return join(ROOT, srcDir);
-//   }
-//
-//   return join(ROOT, "src");
-// }
+function getSrcDir() {
+  const params = minimist(process.argv.slice(2));
+  let srcDir;
+  if (params.d || params.dir) {
+    srcDir = params.d || params.dir;
+  }
+  if (srcDir) {
+    if (isAbsolute(srcDir)) {
+      return srcDir;
+    }
 
-export const SRC_DIR = join(ROOT, "components");
+    return join(ROOT, srcDir);
+  }
+
+  return join(ROOT, "src");
+}
+
+export const setMistBuildDir = (dir: string) => {
+  process.env.MIST_BUILD_UI_DIR = dir;
+};
+export const getMistBuildDir = () => {
+  return process.env.MIST_BUILD_UI_DIR;
+};
+
+export const setMistBuildName = (name: string) => {
+  process.env.MIST_BUILD_UI_NAME = name;
+};
+
+export const getMistBuildName = () => {
+  return process.env.MIST_BUILD_UI_NAME;
+};
+export const SRC_DIR = getSrcDir();
 export const STYLE_DIR = join(SRC_DIR, "style");
+export const COMPONENT_LESS_FILE = join(SRC_DIR, "style.ts");
+export const OUT_PUT_COMPONENTS_LESS_FILE = join(
+  LIB_DIR,
+  "style",
+  "components.less"
+);

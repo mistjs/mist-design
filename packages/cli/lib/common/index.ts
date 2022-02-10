@@ -13,7 +13,7 @@ export const STYLE_REGEXP = /\.(css|less|scss)$/;
 export const SCRIPT_REGEXP = /\.(js|ts|jsx|tsx)$/;
 export const JSX_REGEXP = /\.(j|t)sx$/;
 export const ENTRY_EXTS = ["js", "ts", "tsx", "jsx", "vue"];
-export const STYLE_TS_FILE = new RegExp("style/index.ts$");
+export const STYLE_TS_FILE = new RegExp("style/index.(ts|tsx)$");
 
 export function removeExt(path: string) {
   return path.replace(".js", "");

@@ -2,10 +2,10 @@ import { join } from "path";
 import { CWD, DIST_DIR, ES_DIR, getMistBuildName } from "../common/constant";
 import type { InlineConfig, LibraryFormats } from "vite";
 
-export function getViteConfigForPackage({
+export function getViteStyleConfigForPackage({
   minify,
-  formats,
   external,
+  formats,
 }: {
   minify: boolean;
   formats: LibraryFormats[];
@@ -23,14 +23,12 @@ export function getViteConfigForPackage({
       },
     },
     build: {
+      emptyOutDir: false,
       lib: {
         name,
-        entry: join(ES_DIR, "index.js"),
+        entry: join(ES_DIR, "style.js"),
         formats,
-        fileName: (format: string) => {
-          const suffix = format === "umd" ? "" : `.${format}`;
-          return minify ? `${name}${suffix}.min.js` : `${name}${suffix}.js`;
-        },
+        fileName: () => "theme.js",
       },
       // terser has better compression than esbuild
       minify: minify ? "terser" : false,

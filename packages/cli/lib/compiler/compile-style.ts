@@ -10,13 +10,25 @@ async function compileFile(filePath: string) {
   const parsedPath = parse(filePath);
   try {
     if (parsedPath.ext === ".less") {
-      const source = await compileLess(filePath);
-      return await compileCss(source);
+      if (
+        parsedPath.base === "index.less" ||
+        parsedPath.base === "MistUI.less" ||
+        parsedPath.base === "MistUI.dark.less"
+      ) {
+        const source = await compileLess(filePath);
+        return await compileCss(source);
+      } else {
+        return Promise.resolve();
+      }
     }
 
     if (parsedPath.ext === ".scss") {
-      const source = await compileSass(filePath);
-      return await compileCss(source);
+      if (parsedPath.base === "index.scss") {
+        const source = await compileSass(filePath);
+        return await compileCss(source);
+      } else {
+        return Promise.resolve();
+      }
     }
 
     const source = readFileSync(filePath, "utf-8");
@@ -29,6 +41,7 @@ async function compileFile(filePath: string) {
 
 export async function compileStyle(filePath: string) {
   const css = await compileFile(filePath);
-
-  writeFileSync(replaceExt(filePath, ".css"), css);
+  if (css) {
+    writeFileSync(replaceExt(filePath, ".css"), css);
+  }
 }

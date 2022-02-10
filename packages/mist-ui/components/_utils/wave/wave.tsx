@@ -6,7 +6,6 @@ import {
   onMounted,
   ref,
 } from "vue";
-import "./style";
 import { ComponentInternalInstance } from "vue";
 import { findDOMNode, isHidden, isNotGrey } from "./hooks/tools";
 // @ts-ignore

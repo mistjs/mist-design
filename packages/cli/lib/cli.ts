@@ -1,8 +1,6 @@
 import { Command } from "commander";
 import * as process from "process";
 import pkg from "../package.json";
-
-import { compile } from "./plugins/compile";
 import { build } from "./plugins/build";
 const program = new Command("mist");
 
@@ -11,20 +9,11 @@ program
   .helpOption("-h,--help", "mist cli 帮助文档")
   .version(pkg.version, "-v,--version", "查看版本信息");
 
-program.command("ui").description("项目编译").action(build);
-
 program
-  .command("compile [type]")
+  .command("build [type]")
   .description("项目编译工具")
   .option("-d, --dir <dir>", "打包项目的输入的目录", "src")
-  .option("-o, --out <out>", "打包项目输出的目录", "dist")
   .option("-n, --name <name>", "打包项目输出的目录", "index")
-  .option(
-    "-f, --format <format>",
-    "打包输出的类型，支持类型有esm,cjs,umd",
-    "esm,cjs"
-  )
-  .option("-w, --watch", "是否开启监听模式", false)
-  .action(compile);
+  .action(build);
 
 program.parse(process.argv);

@@ -31,8 +31,7 @@
     "./lib/": "./lib/"
   },
   "scripts": {
-    "build": "mist compile ui -d components -n MistUI",
-    "build:ui": "mist ui"
+    "build": "mist build ui -d components -n MistUI"
   },
   "author": "aibayanyu",
   "license": "MIT",
