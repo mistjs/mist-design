@@ -130,8 +130,8 @@ const genBundleLessOutPuts = async () => {
     // 输出样式
     const baseLess = `@import '../lib/style/index.less';
 @import '../lib/style/components.less';`;
-    const darkLess = `@import '../lib/style/dark.less';
-@import '../lib/style/components.less';`;
+    const darkLess = `@import './${(getMistBuildName() || "MistUI") + ".less"}';
+@import '../lib/style/dark.less';`;
     const baseFileDir = join(
       DIST_DIR,
       (getMistBuildName() || "MistUI") + ".less"

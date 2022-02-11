@@ -1,5 +1,5 @@
 import { existsSync, readFileSync } from "fs";
-import { fileURLToPath } from "url";
+// import { fileURLToPath } from "url";
 import { join, dirname, isAbsolute } from "path";
 import minimist from "minimist";
 
