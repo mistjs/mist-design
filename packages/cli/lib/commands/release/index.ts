@@ -70,7 +70,9 @@ export async function release(command: { tag?: string }) {
     plugins: {
       [PLUGIN_PATH]: {},
     },
-    npm: false,
+    npm: {
+      publish: false,
+    },
     increment,
     git: {
       tagName: "v${version}",
