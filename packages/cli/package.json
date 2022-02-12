@@ -1,5 +1,5 @@
 {
-  "name": "@mist/cli",
+  "name": "@mistjs/cli",
   "version": "1.0.1",
   "description": "前端打包脚手架",
   "main": "dist/lib/index.js",

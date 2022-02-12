@@ -1,5 +1,5 @@
 {
-  "name": "@mist/use",
+  "name": "@mistjs/use",
   "version": "1.0.0",
   "description": "mist hooks",
   "main": "index.js",
