@@ -69,13 +69,13 @@ export async function release(command: { tag?: string }) {
     });
     increment = response.tag;
     if (includes.includes(response.tag)) {
-      increment = "patch";
+      increment = v.includes(response.tag) ? false : "patch";
       preRelease = v.includes(response.tag) ? true : response.tag;
       command.tag = response.tag;
     }
   } else {
     if (!excludes.includes(command.tag)) {
-      increment = command.tag;
+      increment = v.includes(command.tag) ? false : "patch";
       preRelease = v.includes(command.tag) ? true : command.tag;
     }
   }
