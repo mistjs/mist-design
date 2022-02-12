@@ -160,3 +160,11 @@ export const filterMonorepoPkg = async (
   }
   return false;
 };
+
+export const setPublishRegistry = (r: string) => {
+  process.env.MIST_CLI_PUBLISH_REGISTRY = r;
+};
+
+export const setPublishTag = (t: string) => {
+  process.env.MIST_CLI_PUBLISH_TAG = t;
+};

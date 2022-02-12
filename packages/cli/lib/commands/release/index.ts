@@ -4,7 +4,12 @@ import { fileURLToPath } from "url";
 import prompts from "prompts";
 import findpkg from "find-package-json";
 import { CWD } from "../../common/constant";
-import { isMonorepo, isMonorepoProject } from "../../common";
+import {
+  isMonorepo,
+  isMonorepoProject,
+  setPublishRegistry,
+  setPublishTag,
+} from "../../common";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PLUGIN_PATH = join(
@@ -12,8 +17,12 @@ const PLUGIN_PATH = join(
   "../../../../cjs/mist-cli-release-plugin.cjs"
 );
 
-export async function release(command: { tag?: string }) {
+export async function release(command: { tag?: string; registry?: string }) {
   await isMonorepoProject();
+  if (command.registry) {
+    // 配置了registry
+    setPublishRegistry(command.registry);
+  }
   let increment;
   let preRelease: boolean | string = false;
   const includes = ["beta", "alpha", "rc", "next"];
@@ -83,6 +92,9 @@ export async function release(command: { tag?: string }) {
       increment = v.includes(command.tag) ? undefined : "patch";
       preRelease = command.tag;
     }
+  }
+  if (command.tag) {
+    setPublishTag(command.tag);
   }
   const tagName = isMonorepo() ? `${myName}-v` + "${version}" : "v${version}";
   const commitMessage = isMonorepo()
