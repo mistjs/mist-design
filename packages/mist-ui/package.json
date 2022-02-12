@@ -62,9 +62,10 @@
     "url": "https://github.com/mistjs/mist-design/issues"
   },
   "devDependencies": {
+    "@mist/cli": "workspace:*",
     "@types/node": "^16.11.21",
     "less": "^4.1.2",
     "typescript": "~4.5.5",
-    "@mist/cli": "workspace:*"
+    "vitest": "^0.1.23"
   }
 }

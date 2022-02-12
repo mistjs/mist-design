@@ -8,4 +8,8 @@ export function slimPath(path: string) {
   return chalk.yellow(path.replace(ROOT, ""));
 }
 
+export function errorConsole(str: string) {
+  return console.log(chalk.red(str));
+}
+
 export { ora, consola };

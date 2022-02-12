@@ -10,6 +10,7 @@ import {
   setPublishRegistry,
   setPublishTag,
 } from "../../common";
+import { errorConsole } from "../../common/logger";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PLUGIN_PATH = join(
@@ -100,18 +101,26 @@ export async function release(command: { tag?: string; registry?: string }) {
   const commitMessage = isMonorepo()
     ? `release(${myName}): ` + "${version}"
     : "release: ${version}";
-  await releaseIt({
-    plugins: {
-      [PLUGIN_PATH]: {},
-    },
-    npm: {
-      publish: false,
-    },
-    increment,
-    preRelease,
-    git: {
-      tagName,
-      commitMessage,
-    },
-  });
+  try {
+    await releaseIt({
+      plugins: {
+        [PLUGIN_PATH]: {},
+      },
+      npm: {
+        publish: false,
+      },
+      increment,
+      preRelease,
+      git: {
+        tagName,
+        commitMessage,
+      },
+    });
+  } catch (e) {
+    if ((e as any).message.includes("Working dir must be clean")) {
+      errorConsole("请先合并或者提交代码");
+    } else {
+      console.log(e);
+    }
+  }
 }
