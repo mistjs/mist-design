@@ -19,6 +19,9 @@ export async function release(command: { tag?: string }) {
   const p = findpkg(CWD);
   const pkg = p.next().value;
   const v: string = pkg.version;
+  if (!v) {
+    throw new Error("获取package.json失败");
+  }
   if (!command.tag) {
     const response = await prompts({
       type: "select",
