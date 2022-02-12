@@ -4,6 +4,7 @@ import { fileURLToPath } from "url";
 import prompts from "prompts";
 import findpkg from "find-package-json";
 import { CWD } from "../../common/constant";
+import { isMonorepo, isMonorepoProject } from "../../common";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PLUGIN_PATH = join(
@@ -12,6 +13,7 @@ const PLUGIN_PATH = join(
 );
 
 export async function release(command: { tag?: string }) {
+  await isMonorepoProject();
   let increment;
   let preRelease: boolean | string = false;
   const includes = ["beta", "alpha", "rc", "next"];
@@ -19,6 +21,9 @@ export async function release(command: { tag?: string }) {
   const p = findpkg(CWD);
   const pkg = p.next().value;
   const v: string = pkg.version;
+  const name: string = /^@/.test(pkg.name)
+    ? pkg.name.split(0, pkg.name.findIndex("/"))
+    : pkg.name;
   if (!v) {
     throw new Error("获取package.json失败");
   }
@@ -79,7 +84,10 @@ export async function release(command: { tag?: string }) {
       preRelease = command.tag;
     }
   }
-  console.log(preRelease, v);
+  const tagName = isMonorepo() ? `${name}v` + "${version}" : "v${version}";
+  const commitMessage = isMonorepo()
+    ? `release(${name}): ` + "${version}"
+    : "release: ${version}";
   await releaseIt({
     plugins: {
       [PLUGIN_PATH]: {},
@@ -90,8 +98,8 @@ export async function release(command: { tag?: string }) {
     increment,
     preRelease,
     git: {
-      tagName: "v${version}",
-      commitMessage: "release: ${version}",
+      tagName,
+      commitMessage,
     },
   });
 }
