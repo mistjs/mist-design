@@ -20,13 +20,13 @@ export async function release(command: { tag?: string }) {
   const excludes = ["patch", "minor", "major"];
   const p = findpkg(CWD);
   const pkg = p.next().value;
-  const v: string = pkg.version;
-  const name: string = /^@/.test(pkg.name)
-    ? pkg.name.split(0, pkg.name.findIndex("/"))
-    : pkg.name;
-  if (!v) {
+  const v: string | undefined = pkg.version;
+  const name: string | undefined = pkg.name;
+  if (!pkg || !v || !name) {
     throw new Error("获取package.json失败");
   }
+  const splitIndex = name.indexOf("/") === -1 ? 1 : name.indexOf("/") + 1;
+  const myName = /^@/.test(name) ? name.slice(splitIndex) : name;
   if (!command.tag) {
     const response = await prompts({
       type: "select",
@@ -84,9 +84,9 @@ export async function release(command: { tag?: string }) {
       preRelease = command.tag;
     }
   }
-  const tagName = isMonorepo() ? `${name}v` + "${version}" : "v${version}";
+  const tagName = isMonorepo() ? `${myName}-v` + "${version}" : "v${version}";
   const commitMessage = isMonorepo()
-    ? `release(${name}): ` + "${version}"
+    ? `release(${myName}): ` + "${version}"
     : "release: ${version}";
   await releaseIt({
     plugins: {
