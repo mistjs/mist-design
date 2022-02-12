@@ -8,7 +8,8 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "build:ui": "pnpm build --filter=mist-ui",
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "changelog": "mist changelog"
   },
   "keywords": [],
   "author": "aibayanyu",

@@ -1,6 +1,10 @@
 import fse from "fs-extra";
-import { sep, join } from "path";
-import { SRC_DIR } from "./constant";
+import { join, sep } from "path";
+import { CWD, SRC_DIR } from "./constant";
+import findWorkspaceDir from "@pnpm/find-workspace-dir";
+import { PackageSelector, readProjects } from "@pnpm/filter-workspace-packages";
+import yaml from "yaml";
+import { FilterMonorepoPackage } from "../typing";
 
 const { lstatSync, existsSync, readdirSync, readFileSync } = fse;
 
@@ -91,3 +95,68 @@ export function setNodeEnv(value: NodeEnv) {
 export function isDev() {
   return process.env.NODE_ENV === "development";
 }
+
+export function isMonorepo() {
+  return process.env.MIST_CLI_IS_MONOREPO === "monorepo";
+}
+
+export function getMonorepoDir() {
+  return process.env.MIST_CLI_IS_MONOREPO_DIR;
+}
+
+// 判断当前是不是一个monorepo的项目
+export const isMonorepoProject = async (): Promise<boolean> => {
+  const pnpmWorkspacePkgs = await findWorkspaceDir(CWD);
+  if (pnpmWorkspacePkgs) {
+    process.env.MIST_CLI_IS_MONOREPO = "monorepo";
+    process.env.MIST_CLI_IS_MONOREPO_DIR = pnpmWorkspacePkgs;
+  }
+  return !!pnpmWorkspacePkgs;
+};
+
+// 获取所有的monorepo包
+export const getMonorepoPkgs = async (): Promise<string[]> => {
+  const pnpmWorkspacePkgs = await findWorkspaceDir(CWD);
+  if (pnpmWorkspacePkgs) {
+    // 获取里面的数据
+    const source = readFileSync(
+      join(pnpmWorkspacePkgs, "/pnpm-workspace.yaml"),
+      "utf-8"
+    );
+    const parseData = yaml.parse(source);
+    if (parseData && parseData.packages) {
+      return parseData.packages;
+    } else {
+      return [];
+    }
+  }
+  return [];
+};
+
+export const filterMonorepoPkg = async (
+  filter?: string
+): Promise<FilterMonorepoPackage[] | false> => {
+  if (isMonorepo()) {
+    // 判断哪些是需要忽略的哪些是需要包含的
+    const pkgSelectors: PackageSelector[] = [];
+    if (filter) {
+      pkgSelectors.push({
+        namePattern: filter,
+      });
+    }
+    const { selectedProjectsGraph } = await readProjects(
+      getMonorepoDir() || CWD,
+      pkgSelectors
+    );
+    // 转为数组
+    return Object.entries(selectedProjectsGraph).map(
+      (v) =>
+        ({
+          dir: v[1].package.dir,
+          name: v[1].package.manifest.name,
+          version: v[1].package.manifest.version,
+        } as FilterMonorepoPackage)
+    );
+  }
+  return false;
+};
