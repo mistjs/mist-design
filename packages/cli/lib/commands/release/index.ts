@@ -2,6 +2,8 @@ import releaseIt from "release-it";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import prompts from "prompts";
+import findpkg from "find-package-json";
+import { CWD } from "../../common/constant";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PLUGIN_PATH = join(
@@ -14,6 +16,9 @@ export async function release(command: { tag?: string }) {
   let preRelease: boolean | string = false;
   const includes = ["beta", "alpha", "rc", "next"];
   const excludes = ["patch", "minor", "major"];
+  const p = findpkg(CWD);
+  const pkg = p.next().value;
+  const v: string = pkg.version;
   if (!command.tag) {
     const response = await prompts({
       type: "select",
@@ -62,13 +67,13 @@ export async function release(command: { tag?: string }) {
     increment = response.tag;
     if (includes.includes(response.tag)) {
       increment = "patch";
-      preRelease = response.tag;
+      preRelease = v.includes(response.tag) ? true : response.tag;
       command.tag = response.tag;
     }
   } else {
     if (!excludes.includes(command.tag)) {
       increment = command.tag;
-      preRelease = command.tag;
+      preRelease = v.includes(command.tag) ? true : command.tag;
     }
   }
 

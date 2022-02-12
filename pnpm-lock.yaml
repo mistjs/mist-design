@@ -93,6 +93,7 @@ importers:
       cpx: ^1.5.0
       esbuild: ^0.14.21
       execa: ^5.1.1
+      find-package-json: ^1.2.0
       find-packages: ^8.0.11
       fs-extra: ^10.0.0
       hash-sum: ^2.0.0
@@ -145,6 +146,7 @@ importers:
       cpx: 1.5.0
       esbuild: 0.14.21
       execa: 5.1.1
+      find-package-json: 1.2.0
       find-packages: 8.0.11
       fs-extra: 10.0.0
       hash-sum: 2.0.0
@@ -5695,6 +5697,10 @@ packages:
 
   /find-index/0.1.1:
     resolution: {integrity: sha512-uJ5vWrfBKMcE6y2Z8834dwEZj9mNGxYa3t3I53OwFeuZ8D9oc2E5zcsrkuhX6h4iYrjhiv0T3szQmxlAV9uxDg==}
+    dev: false
+
+  /find-package-json/1.2.0:
+    resolution: {integrity: sha512-+SOGcLGYDJHtyqHd87ysBhmaeQ95oWspDKnMXBrnQ9Eq4OkLNqejgoaD8xVWu6GPa0B6roa6KinCMEMcVeqONw==}
     dev: false
 
   /find-packages/8.0.11:
