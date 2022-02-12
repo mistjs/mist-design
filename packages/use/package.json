@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "",
-    "build": ""
+    "build": "echo 'build' ",
+    "release": "mist release",
+    "install": "pnpm build"
   },
   "publishConfig": {
     "access": "public",

@@ -11,7 +11,8 @@
   "scripts": {
     "dev": "rollup -w -c rollup.config.ts",
     "build": "rollup -c rollup.config.ts",
-    "release": "mist release"
+    "release": "mist release",
+    "install": "pnpm build"
   },
   "keywords": [],
   "files": [

@@ -32,7 +32,7 @@
   },
   "scripts": {
     "build": "mist build ui -d components -n MistUI",
-    "changelog": "mist changelog"
+    "release": "mist release"
   },
   "author": "aibayanyu",
   "license": "MIT",
