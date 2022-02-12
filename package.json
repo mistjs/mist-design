@@ -21,6 +21,10 @@
   "dependencies": {
     "vue": "^3.2.27"
   },
+  "lint-staged": {
+    "*.{ts,tsx,js,vue,less}": "prettier --write",
+    "*.{ts,tsx,js,vue}": "eslint --fix --ignore-path .gitignore"
+  },
   "devDependencies": {
     "@mist/cli": "workspace:*",
     "@rushstack/eslint-patch": "^1.1.0",
@@ -39,6 +43,7 @@
     "eslint-plugin-vue": "^8.2.0",
     "husky": "^7.0.4",
     "jsdom": "^19.0.0",
+    "lint-staged": "^12.3.3",
     "prettier": "^2.5.1",
     "start-server-and-test": "^1.14.0",
     "typescript": "~4.5.4",
