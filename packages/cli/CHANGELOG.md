@@ -1,3 +1,12 @@
+### [v1.0.4-alpha.0](https://github.com/compare/v1.0.2-alpha.0...v1.0.4-alpha.0)
+
+`2022-02-12`
+
+**Bug Fixes**
+
+- cli: 修复预发布版本的问题 [5616c2](https://github.com/commit/5616c2c2d2a3f9ab3e1ec9e572f779ffe19782a2)
+- cli: 修复预发布版本的问题 [6f3248](https://github.com/commit/6f3248dd73c9601fd0eea4d189f3ad9a27566200)
+- cli: 修复预发布版本的问题 [a31b6c](https://github.com/commit/a31b6cb162af3aae99117dcee1bea75a6213a20a)
 ### [v1.0.2-alpha.0](https://github.com/compare/v1.0.1...v1.0.2-alpha.0)
 
 `2022-02-12`
@@ -5,10 +14,3 @@
 **Bug Fixes**
 
 - cli: 修复预发布版本的问题 [1c1f84](https://github.com/commit/1c1f84da78266b7573331d98c7ac0cf45785f02a)
-### [v1.0.1](https://github.com/compare/v0.0.1...v1.0.1)
-
-`2022-02-12`
-
-**Bug Fixes**
-
-- cli: 调整打包工具的信息 [9046e9](https://github.com/commit/9046e959c13e439011522f30f379d1bf1f7c7679)
