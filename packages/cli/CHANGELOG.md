@@ -1,9 +1,10 @@
-### [v1.0.1](https://github.com/compare/v1.0.6-alpha.1...v1.0.1)
+### [v1.0.2](https://github.com/compare/v1.0.6-alpha.1...v1.0.2)
 
 `2022-02-12`
 
 **Bug Fixes**
 
+- cli: 增加git未合并代码提示 [c3b65a](https://github.com/commit/c3b65a403f948ad2f62507bbf523545b7604d58c)
 - cli: 增加git未合并代码提示 [86113f](https://github.com/commit/86113f0cd2770e0da61fd99959691d74d936f193)
 - cli: 增加monorepo模式下的发版信息 [ce6b8e](https://github.com/commit/ce6b8e5144013eb22b4d88d3ef0bc30bd29a2304)
 - cli: 增加monorepo模式下的发版信息 [a3d3f7](https://github.com/commit/a3d3f7209b071eb613b97711fe94e20552a76a58)
@@ -11,6 +12,7 @@
 
 **release**
 
+- cli: 1.0.1 [1e7d6d](https://github.com/commit/1e7d6db1c2e416c7a45c15186292fd59b28dd52d)
 - cli: 1.0.6-alpha.2 [8a99c5](https://github.com/commit/8a99c52d04b19762b1b74370204c03e58fc24314)
 ### [v1.0.6-alpha.1](https://github.com/compare/v1.0.6-alpha.0...v1.0.6-alpha.1)
 
