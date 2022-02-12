@@ -1,4 +1,11 @@
-### [v1.0.0](https://github.com/compare/...v1.0.0)
+### [v1.0.1](https://github.com/compare/v0.0.1...v1.0.1)
+
+`2022-02-12`
+
+**Bug Fixes**
+
+- cli: 调整打包工具的信息 [9046e9](https://github.com/commit/9046e959c13e439011522f30f379d1bf1f7c7679)
+### [v0.0.1](https://github.com/compare/36c1c104d688665580a399368a55543b03b81af2...v0.0.1)
 
 `2022-02-12`
 
