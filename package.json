@@ -9,7 +9,8 @@
     "build:ui": "pnpm build --filter=mist-ui",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "changelog": "mist changelog"
+    "changelog": "mist changelog",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "aibayanyu",
@@ -36,6 +37,7 @@
     "eslint": "^8.5.0",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-vue": "^8.2.0",
+    "husky": "^7.0.4",
     "jsdom": "^19.0.0",
     "prettier": "^2.5.1",
     "start-server-and-test": "^1.14.0",
