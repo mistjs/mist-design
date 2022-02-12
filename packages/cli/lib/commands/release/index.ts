@@ -11,7 +11,9 @@ const PLUGIN_PATH = join(
 
 export async function release(command: { tag?: string }) {
   let increment;
+  let preRelease: boolean | string = false;
   const includes = ["beta", "alpha", "rc", "next"];
+  const excludes = ["patch", "minor", "major"];
   if (!command.tag) {
     const response = await prompts({
       type: "select",
@@ -59,11 +61,15 @@ export async function release(command: { tag?: string }) {
     });
     increment = response.tag;
     if (includes.includes(response.tag)) {
-      increment = "pre" + response.tag;
+      increment = "patch";
+      preRelease = response.tag;
       command.tag = response.tag;
     }
   } else {
-    increment = "pre" + command.tag;
+    if (!excludes.includes(command.tag)) {
+      increment = command.tag;
+      preRelease = command.tag;
+    }
   }
 
   await releaseIt({
@@ -74,6 +80,7 @@ export async function release(command: { tag?: string }) {
       publish: false,
     },
     increment,
+    preRelease,
     git: {
       tagName: "v${version}",
       commitMessage: "release: ${version}",
