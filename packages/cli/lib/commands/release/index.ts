@@ -79,7 +79,7 @@ export async function release(command: { tag?: string }) {
       preRelease = v.includes(command.tag) ? true : command.tag;
     }
   }
-
+  console.log(preRelease, v);
   await releaseIt({
     plugins: {
       [PLUGIN_PATH]: {},
