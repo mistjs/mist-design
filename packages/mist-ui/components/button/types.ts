@@ -1,8 +1,14 @@
-import type { ExtractPropTypes, PropType, VNode } from "vue";
+import type { DefineComponent, ExtractPropTypes, PropType, VNode } from "vue";
 
 export type ButtonSize = "small" | "middle" | "larger";
 
 export type ButtonShape = "default" | "circle" | "round";
+
+export type ButtonHTMLType = "submit" | "button" | "reset";
+
+export type ButtonLoading = number | boolean;
+
+export type ButtonIconType = VNode | DefineComponent;
 
 export type ButtonType =
   | "primary"
@@ -40,11 +46,11 @@ export const buttonProps = {
   },
   // 原生html标签中的button
   htmlType: {
-    type: String as PropType<string>,
+    type: String as PropType<ButtonHTMLType>,
     default: "button",
   },
   icon: {
-    type: Object as PropType<VNode>,
+    type: [Object, Function] as PropType<VNode>,
     default: undefined,
   },
   loading: {

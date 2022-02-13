@@ -88,7 +88,7 @@
     "zx": "^4.3.0"
   },
   "devDependencies": {
-    "@mist/cli": "workspace:*",
+    "@mistjs/cli": "workspace:*",
     "@types/babel__core": "^7.1.18",
     "@types/bluebird": "^3.5.36",
     "@types/co": "^4.6.3",

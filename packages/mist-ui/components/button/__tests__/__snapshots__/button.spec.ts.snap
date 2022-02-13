@@ -1,0 +1,5 @@
+// Vitest Snapshot v1
+
+exports[`button > render properly 1`] = `"<button>Test</button>"`;
+
+exports[`button > renders correctly 1`] = `"<button>Test</button>"`;

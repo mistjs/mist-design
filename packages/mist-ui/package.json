@@ -32,12 +32,16 @@
   },
   "scripts": {
     "build": "mist build ui -d components -n MistUI",
-    "release": "mist release"
+    "release": "mist release",
+    "test:unit": "vitest --environment jsdom"
   },
   "author": "aibayanyu",
   "license": "MIT",
   "dependencies": {
-    "vue": "^3.2.29"
+    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
+    "vue": "^3.2.29",
+    "@mist-desgin/icons": "workspace:*"
   },
   "files": [
     "es",
@@ -62,8 +66,10 @@
     "url": "https://github.com/mistjs/mist-design/issues"
   },
   "devDependencies": {
-    "@mist/cli": "workspace:*",
+    "@mistjs/cli": "workspace:*",
     "@types/node": "^16.11.21",
+    "@vue/test-utils": "^2.0.0-rc.18",
+    "@vue/tsconfig": "^0.1.3",
     "less": "^4.1.2",
     "typescript": "~4.5.5",
     "vitest": "^0.1.23"

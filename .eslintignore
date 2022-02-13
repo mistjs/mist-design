@@ -2,3 +2,4 @@ node_modules
 packages/**/dist
 packages/mist-ui/es
 packages/mist-ui/lib
+packages/icons

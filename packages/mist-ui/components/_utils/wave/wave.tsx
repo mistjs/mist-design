@@ -130,9 +130,9 @@ export default defineComponent({
         resetEffect(node);
         // 获取颜色细节
         const waveColor =
-          getComputedStyle(node).getPropertyValue("background-color") ||
           getComputedStyle(node).getPropertyValue("border-top-color") || // Firefox Compatible
-          getComputedStyle(node).getPropertyValue("border-color");
+          getComputedStyle(node).getPropertyValue("border-color") ||
+          getComputedStyle(node).getPropertyValue("background-color");
         clickWaveTimeoutId.value = setTimeout(
           () => effectClick(node, waveColor),
           0

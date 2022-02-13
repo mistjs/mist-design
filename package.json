@@ -23,10 +23,11 @@
   },
   "lint-staged": {
     "*.{ts,tsx,js,vue,less}": "prettier --write",
-    "*.{ts,tsx,js,vue}": "eslint --fix --ignore-path .gitignore"
+    "*.{ts,tsx,js,vue}": "eslint . --fix"
   },
   "devDependencies": {
-    "@mist/cli": "workspace:*",
+    "@mist-desgin/icons": "workspace:*",
+    "@mistjs/cli": "workspace:*",
     "@rushstack/eslint-patch": "^1.1.0",
     "@types/node": "^16.11.21",
     "@vitejs/plugin-vue": "^2.0.1",
