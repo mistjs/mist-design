@@ -114,6 +114,9 @@ export default defineComponent({
       }
       emit("click", event);
     };
+    const onMouseenter = (event: MouseEvent) => {
+      emit("mouseenter", event);
+    };
     return () => {
       const iconNode = innerLoading.value ? (
         <LoadingOutlined />
@@ -130,6 +133,7 @@ export default defineComponent({
         <button
           {...attrs}
           disabled={_props.disabled}
+          onMouseenter={onMouseenter}
           type={_props.htmlType}
           onClick={handleClick}
           class={classes.value}
