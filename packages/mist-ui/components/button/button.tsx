@@ -7,6 +7,7 @@ import {
   VNode,
   watch,
   Text,
+  toRefs,
 } from "vue";
 import Wave from "../_utils/wave";
 import { useConfigInject } from "../config-provider";
@@ -38,9 +39,11 @@ const isTwoCNChar = rxTwoCNChar.test.bind(rxTwoCNChar);
 export default defineComponent({
   name: "MButton",
   props: buttonProps,
-  emits: ["click"],
+  emits: ["click", "mousedown", "mouseenter"],
   setup(_props, { slots, attrs, emit }) {
-    const { prefixCls, direction, autoInsertSpace } = useConfigInject();
+    const { prefixCls, direction, autoInsertSpaceInButton } = toRefs(
+      useConfigInject()
+    );
     const children = flattenChildren(getPropsSlot(slots, _props));
     const icon = getPropsSlot(slots, _props, "icon");
     const hasTwoCNChar = ref<boolean>(false);
@@ -84,7 +87,7 @@ export default defineComponent({
     // 定义所有的类型信息
     const classes = computed(() => {
       const { type, shape, size, ghost, block, danger } = _props;
-      const pre = prefixCls + "-btn";
+      const pre = prefixCls.value + "-btn";
       const sizeClassNameMap = { large: "lg", small: "sm", middle: undefined };
       const sizeCls = size ? sizeClassNameMap[size] || "" : "";
       return {
@@ -95,11 +98,11 @@ export default defineComponent({
         [`${pre}-icon-only`]: children.length === 0 && !!iconType.value,
         [`${pre}-background-ghost`]: ghost && !isUnborderedButtonType(type),
         [`${pre}-loading`]: innerLoading.value,
-        [`${prefixCls}-two-chinese-chars`]:
-          hasTwoCNChar.value && autoInsertSpace,
+        [`${pre}-two-chinese-chars`]:
+          hasTwoCNChar.value && autoInsertSpaceInButton.value,
         [`${pre}-block`]: block,
         [`${pre}-dangerous`]: !!danger,
-        [`${pre}-rtl`]: direction === "rtl",
+        [`${pre}-rtl`]: direction.value === "rtl",
       };
     });
 
@@ -118,7 +121,10 @@ export default defineComponent({
         (typeof icon === "function" && h(icon)) || icon
       );
       const kids = children.map((child) =>
-        insertSpace(child, isNeedInserted.value && autoInsertSpace)
+        insertSpace(
+          child,
+          isNeedInserted.value && autoInsertSpaceInButton.value
+        )
       );
       const buttonNode = (
         <button

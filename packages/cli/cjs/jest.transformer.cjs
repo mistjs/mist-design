@@ -1,7 +1,7 @@
-const sfc = require('vue/compiler-sfc');
-const babel = require('@babel/core');
-const esbuild = require('esbuild');
-const nodePath = require('path');
+const sfc = require("vue/compiler-sfc");
+const babel = require("@babel/core");
+const esbuild = require("esbuild");
+const nodePath = require("path");
 
 const isJsxFile = (path) => /\.(j|t)sx$/.test(path);
 const isTsxFile = (path) => /\.tsx$/.test(path);
@@ -11,10 +11,10 @@ const transformJsx = (code, path) => {
   const babelResult = babel.transformSync(code, {
     filename: path,
     babelrc: false,
-    presets: isTsxFile(path) ? ['@babel/preset-typescript'] : [],
-    plugins: [['@vue/babel-plugin-jsx']],
+    presets: isTsxFile(path) ? ["@babel/preset-typescript"] : [],
+    plugins: [["@vue/babel-plugin-jsx"]],
   });
-  return babelResult?.code || '';
+  return babelResult?.code || "";
 };
 
 const transformSFC = (code, path) => {
@@ -26,7 +26,7 @@ const transformSFC = (code, path) => {
 
   if (errors.length) {
     errors.forEach((error) => console.error(error));
-    return '';
+    return "";
   }
 
   const output = [];
@@ -34,16 +34,16 @@ const transformSFC = (code, path) => {
 
   if (descriptor.script) {
     const content = descriptor.script.content.replace(
-      'export default',
-      'const script ='
+      "export default",
+      "const script ="
     );
     output.push(content);
   } else if (descriptor.scriptSetup) {
     const result = sfc.compileScript(descriptor, {
-      id: 'mock',
+      id: "mock",
     });
 
-    const content = result.content.replace('export default', 'const script =');
+    const content = result.content.replace("export default", "const script =");
     output.push(content);
 
     if (result.bindings) {
@@ -55,7 +55,7 @@ const transformSFC = (code, path) => {
 
   if (descriptor.template) {
     const render = sfc.compileTemplate({
-      id: 'mock',
+      id: "mock",
       source: descriptor.template.content,
       filename: path,
       compilerOptions: {
@@ -63,19 +63,19 @@ const transformSFC = (code, path) => {
       },
     }).code;
     output.push(render);
-    output.push('script.render = render;');
+    output.push("script.render = render;");
   }
 
-  output.push('export default script;');
+  output.push("export default script;");
 
-  return output.join('\n');
+  return output.join("\n");
 };
 
 const transformScript = (code) =>
   esbuild.transformSync(code, {
-    target: 'es2016',
-    format: 'cjs',
-    loader: 'ts',
+    target: "es2016",
+    format: "cjs",
+    loader: "ts",
   }).code;
 
 module.exports = {

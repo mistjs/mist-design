@@ -1,4 +1,7 @@
-[id^="components-button-demo-"] .mist-btn{
-    margin-right: 8px;
-    margin-bottom: 12px;
+body{
+    background-color: var(--c-bg);
+    color:var(--c-text);
+}
+h1, h2, h3, h4, h5, h6{
+    color: var(--c-text);
 }

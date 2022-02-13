@@ -1,1 +1,1 @@
-require('jest-canvas-mock');
+require("jest-canvas-mock");

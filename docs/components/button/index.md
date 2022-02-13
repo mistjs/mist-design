@@ -36,6 +36,9 @@
 <demo title="不可用状态" id="components-button-demo-disabled" src="./example/disabled.vue" desc="添加`disabled`属性即可让按钮处于不可用状态，同时按钮样式也会改变。"></demo>
 
 
+<demo title="加载中状态" id="components-button-demo-loading" src="./example/loading.vue" desc="添加`loading`属性即可让按钮处于加载状态，最后两个按钮演示点击后进入加载状态。"></demo>
+
+
 <demo title="幽灵按钮" id="components-button-demo-ghost" src="./example/ghost.vue" desc="幽灵按钮将按钮的内容反色，背景变为透明，常用在有色背景上。"></demo>
 
 
@@ -46,3 +49,71 @@
 
 
 <demo title="危险按钮" id="components-button-demo-danger" src="./example/danger.vue" desc="危险作为一种按钮属性而不是按钮类型。"></demo>
+
+
+## API
+
+通过设置 Button 的属性来产生不同的按钮样式，推荐顺序为：`type` -> `shape` -> `size` -> `loading` -> `disabled`。
+
+按钮的属性说明如下：
+
+| 属性 | 说明 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | --- | --- |
+| block | 将按钮宽度调整为其父宽度的选项 | boolean | false |  |
+| danger | 设置危险按钮 | boolean | false |  |
+| disabled | 按钮失效状态 | boolean | false |  |
+| ghost | 幽灵属性，使按钮背景透明 | boolean | false |  |
+| href | 点击跳转的地址，指定此属性 button 的行为和 a 链接一致 | string | - |  |
+| htmlType | 设置 `button` 原生的 `type` 值，可选值请参考 [HTML 标准](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type) | string | `button` |  |
+| icon | 设置按钮的图标组件 | ReactNode | - |  |
+| loading | 设置按钮载入状态 | boolean \| { delay: number } | false |  |
+| shape | 设置按钮形状 | `default` \| `circle` \| `round` | 'default' |  |
+| size | 设置按钮大小 | `large` \| `middle` \| `small` | `middle` |  |
+| target | 相当于 a 链接的 target 属性，href 存在时生效 | string | - |  |
+| type | 设置按钮类型 | `primary` \| `ghost` \| `dashed` \| `link` \| `text` \| `default` | `default` |  |
+
+支持原生 button 的其他所有属性。
+
+## 事件
+
+| 事件名称 | 说明             | 回调参数        | 版本 |
+| -------- | ---------------- | --------------- | ---- |
+| click    | 点击按钮时的回调 | (event) => void |      |
+
+支持原生 button 的其他所有属性。
+
+## FAQ
+
+### 如何移除两个汉字之间的空格？
+
+根据 Ant Design 设计规范要求，我们会在按钮内(文本按钮和链接按钮除外)只有两个汉字时自动添加空格，如果你不需要这个特性，可以设置 [ConfigProvider](/components/config-provider/#API) 的 `autoInsertSpaceInButton` 为 `false`。
+
+<m-config-provider :autoInsertSpaceInButton="autoInsertSpaceInButton">
+    <m-button type="primary" @click="onSwitch">切换</m-button>
+</m-config-provider>
+
+<script setup lang="ts">
+import { ref } from "vue";
+const autoInsertSpaceInButton = ref<boolean>(true);
+const onSwitch = ()=>{
+    autoInsertSpaceInButton.value = !autoInsertSpaceInButton.value;
+}
+</script>
+
+<style>
+
+[id^="components-button-demo-"] .mist-btn {
+    margin-right: 8px;
+    margin-bottom: 12px;
+}
+[id^="components-button-demo-"] .mist-btn-rtl {
+    margin-right: 0;
+    margin-left: 8px;
+}
+[id^="components-button-demo-"] .mist-btn-group > .mist-btn {
+    margin-right: 0;
+}
+[data-theme="dark"] .site-button-ghost-wrapper {
+    background: rgba(255, 255, 255, 0.2);
+}
+</style>
