@@ -1,4 +1,10 @@
-import type { DefineComponent, ExtractPropTypes, PropType, VNode } from "vue";
+import type {
+  CSSProperties,
+  DefineComponent,
+  ExtractPropTypes,
+  PropType,
+  VNode,
+} from "vue";
 
 export type ButtonSize = "small" | "middle" | "larger";
 
@@ -71,3 +77,20 @@ export const buttonProps = {
   },
 };
 export type ButtonProps = ExtractPropTypes<typeof buttonProps>;
+
+export const buttonGroupProps = {
+  size: {
+    type: String as PropType<ButtonSize>,
+    default: "middle",
+  },
+  style: {
+    type: Object as PropType<CSSProperties>,
+    default: () => ({}),
+  },
+  className: {
+    type: String,
+    default: undefined,
+  },
+};
+
+export type ButtonGroupProps = ExtractPropTypes<typeof buttonGroupProps>;

@@ -51,6 +51,9 @@
 <demo title="危险按钮" id="components-button-demo-danger" src="./example/danger.vue" desc="危险作为一种按钮属性而不是按钮类型。"></demo>
 
 
+<demo title="按钮组" id="components-button-demo-group" src="./example/group.vue" desc="这是一个多个按钮组个的例子，借助`Button.Group`实现。"></demo>
+
+
 ## API
 
 通过设置 Button 的属性来产生不同的按钮样式，推荐顺序为：`type` -> `shape` -> `size` -> `loading` -> `disabled`。
@@ -110,10 +113,10 @@ const onSwitch = ()=>{
     margin-right: 0;
     margin-left: 8px;
 }
-[id^="components-button-demo-"] .mist-btn-group > .mist-btn {
+[id^="components-button-demo-"]  .mist-btn-group > .mist-btn {
     margin-right: 0;
 }
-[data-theme="dark"] .site-button-ghost-wrapper {
-    background: rgba(255, 255, 255, 0.2);
+html.dark .site-m-button-ghost-wrapper {
+    background: rgba(255, 255, 255, 0.2)!important;
 }
 </style>

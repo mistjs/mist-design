@@ -1,18 +1,22 @@
 @import "variable";
 
+@component-background-dark: #141414;
+@base-dark-primary: mix(@cyan-base, @component-background-dark, 85%);
+@green-base-dark:mix (@green-base, @component-background-dark, 85%);
+@red-base-dark:mix (@red-base, @component-background-dark, 65%);
+@gold-base-dark:mix (@gold-base, @component-background-dark, 85%);
+
 html.dark {
-  @base-dark-primary: mix(@cyan-base, @component-background, 85%);
-  //@component-background-dark:
   // ========= Primary Color =========
   --@{mist-prefix}-primary-color: @base-dark-primary;
   --@{mist-prefix}-primary-color-hover: color(
     ~`colorPalette("@{base-dark-primary}", 5) `,
-    @component-background,
+    @component-background-dark,
     90%
   );
   --@{mist-prefix}-primary-color-active: color(
     ~`colorPalette("@{base-dark-primary}", 7) `,
-    @component-background,
+    @component-background-dark,
     25%
   );
   --@{mist-prefix}-primary-color-outline: fade(
@@ -64,41 +68,61 @@ html.dark {
   );
 
   // ========= Success Color =========
-  --@{mist-prefix}-success-color: @green-6;
+  --@{mist-prefix}-success-color: @green-base-dark;
   --@{mist-prefix}-success-color-hover: color(
-    ~`colorPalette("@{green-6}", 5) `
+    ~`colorPalette("@{green-base-dark}", 5) `
   );
   --@{mist-prefix}-success-color-active: color(
-    ~`colorPalette("@{green-6}", 7) `
+    ~`colorPalette("@{green-base-dark}", 7) `
   );
-  --@{mist-prefix}-success-color-outline: fade(@green-6, @outline-fade);
-  --@{mist-prefix}-success-color-deprecated-bg: ~`colorPalette("@{green-6}", 1)
+  --@{mist-prefix}-success-color-outline: fade(@green-base-dark, @outline-fade);
+  --@{mist-prefix}-success-color-deprecated-bg: ~`colorPalette(
+      "@{green-base-dark}",
+      1
+    )
     `;
   --@{mist-prefix}-success-color-deprecated-border: ~`colorPalette(
-      "@{green-6}",
+      "@{green-base-dark}",
       3
     )
     `;
 
   // ========== Error Color ==========
-  --@{mist-prefix}-error-color: @red-5;
-  --@{mist-prefix}-error-color-hover: color(~`colorPalette("@{red-5}", 5) `);
-  --@{mist-prefix}-error-color-active: color(~`colorPalette("@{red-5}", 7) `);
-  --@{mist-prefix}-error-color-outline: fade(@red-5, @outline-fade);
-  --@{mist-prefix}-error-color-deprecated-bg: ~`colorPalette("@{red-5}", 1) `;
-  --@{mist-prefix}-error-color-deprecated-border: ~`colorPalette("@{red-5}", 3)
+  --@{mist-prefix}-error-color: @red-base-dark;
+  --@{mist-prefix}-error-color-hover: color(
+    ~`colorPalette("@{red-base-dark}", 5) `
+  );
+  --@{mist-prefix}-error-color-active: color(
+    ~`colorPalette("@{red-base-dark}", 7) `
+  );
+  --@{mist-prefix}-error-color-outline: fade(@red-base-dark, @outline-fade);
+  --@{mist-prefix}-error-color-deprecated-bg: ~`colorPalette(
+      "@{red-base-dark}",
+      1
+    )
+    `;
+  --@{mist-prefix}-error-color-deprecated-border: ~`colorPalette(
+      "@{red-base-dark}",
+      3
+    )
     `;
 
   // ========= Warning Color =========
-  --@{mist-prefix}-warning-color: @gold-6;
-  --@{mist-prefix}-warning-color-hover: color(~`colorPalette("@{gold-6}", 5) `);
-  --@{mist-prefix}-warning-color-active: color(
-    ~`colorPalette("@{gold-6}", 7) `
+  --@{mist-prefix}-warning-color: @gold-base-dark;
+  --@{mist-prefix}-warning-color-hover: color(
+    ~`colorPalette("@{gold-base-dark}", 5) `
   );
-  --@{mist-prefix}-warning-color-outline: fade(@gold-6, @outline-fade);
-  --@{mist-prefix}-warning-color-deprecated-bg: ~`colorPalette("@{gold-6}", 1) `;
+  --@{mist-prefix}-warning-color-active: color(
+    ~`colorPalette("@{gold-base-dark}", 7) `
+  );
+  --@{mist-prefix}-warning-color-outline: fade(@gold-base-dark, @outline-fade);
+  --@{mist-prefix}-warning-color-deprecated-bg: ~`colorPalette(
+      "@{gold-base-dark}",
+      1
+    )
+    `;
   --@{mist-prefix}-warning-color-deprecated-border: ~`colorPalette(
-      "@{gold-6}",
+      "@{gold-base-dark}",
       3
     )
     `;
@@ -115,4 +139,71 @@ html.dark {
       3
     )
     `;
+
+  // ========= Bg Color ==========
+  --@{mist-prefix}-component-background: @component-background-dark;
+  --@{mist-prefix}-body-background: @black;
+
+  // ========= Text Color =========
+  --@{mist-prefix}-text-color: fade(@white, 85%);
+  --@{mist-prefix}-text-color-secondary: fade(@white, 45%);
+  --@{mist-prefix}-text-color-inverse: @white;
+  --@{mist-prefix}-icon-color-hover: fade(@white, 75%);
+  --@{mist-prefix}-heading-color: fade(@white, 85%);
+
+  // list items or table cells.f5f5f5
+  --@{mist-prefix}-item-hover-bg: fade(@white, 8%);
+
+  // Border color
+  --@{mist-prefix}-border-color-base: #434343; // base border outline a component
+  --@{mist-prefix}-border-color-split: #303030; // split border inside a component
+
+  --@{mist-prefix}-background-color-light: fade(
+    @white,
+    4%
+  ); // background of header and selected item
+  --@{mist-prefix}-background-color-base: fade(
+    @white,
+    8%
+  ); // Default grey background color
+
+  // Disabled states
+  --@{mist-prefix}-disabled-color: fade(@white, 30%);
+  --@{mist-prefix}-disabled-color-dark: fade(@white, 30%);
+
+  // Tree
+  // ---
+  --@{mist-prefix}-tree-bg: transparent;
+
+  // List
+  // ---
+  --@{mist-prefix}-list-customize-card-bg: transparent;
+
+  // Shadow
+  // ---
+  --@{mist-prefix}-shadow-color: rgba(0, 0, 0, 0.45);
+  --@{mist-prefix}-shadow-color-inverse: @component-background;
+  --@{mist-prefix}-box-shadow-base: @shadow-2;
+  --@{mist-prefix}-shadow-1-up: 0 -6px 16px -8px rgba(0, 0, 0, 0.32),
+    0 -9px 28px 0 rgba(0, 0, 0, 0.2), 0 -12px 48px 16px rgba(0, 0, 0, 0.12);
+  --@{mist-prefix}-shadow-1-down: 0 6px 16px -8px rgba(0, 0, 0, 0.32),
+    0 9px 28px 0 rgba(0, 0, 0, 0.2), 0 12px 48px 16px rgba(0, 0, 0, 0.12);
+  --@{mist-prefix}-shadow-1-right: 6px 0 16px -8px rgba(0, 0, 0, 0.32),
+    9px 0 28px 0 rgba(0, 0, 0, 0.2), 12px 0 48px 16px rgba(0, 0, 0, 0.12);
+  --@{mist-prefix}-shadow-2: 0 3px 6px -4px rgba(0, 0, 0, 0.48),
+    0 6px 16px 0 rgba(0, 0, 0, 0.32), 0 9px 28px 8px rgba(0, 0, 0, 0.2);
+
+  // Buttons
+  // ---
+  --@{mist-prefix}-btn-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+  --@{mist-prefix}-btn-primary-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+  --@{mist-prefix}-btn-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+  --@{mist-prefix}-btn-default-bg: transparent;
+  --@{mist-prefix}-btn-default-ghost-color: @text-color;
+  --@{mist-prefix}-btn-default-ghost-border: fade(@white, 25%);
+  --@{mist-prefix}-btn-text-hover-bg: rgba(255, 255, 255, 0.03);
+  --@{mist-prefix}-btn-text-hover-bg-active: fadein(
+    rgba(255, 255, 255, 0.03),
+    1%
+  );
 }

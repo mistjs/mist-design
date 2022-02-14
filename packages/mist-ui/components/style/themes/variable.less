@@ -100,6 +100,80 @@ html {
       3
     )
     `;
+
+  // ========= Bg Color ============
+  --@{mist-prefix}-component-background: #fff;
+  --@{mist-prefix}-body-background: #fff;
+
+  // ========= Text Color =========
+  --@{mist-prefix}-text-color: fade(@black, 85%);
+  --@{mist-prefix}-text-color-secondary: fade(@black, 45%);
+  --@{mist-prefix}-text-color-inverse: @white;
+  --@{mist-prefix}-icon-color-hover: fade(@black, 75%);
+  --@{mist-prefix}-heading-color: fade(@black, 85%);
+
+  // list items or table cells.
+  --@{mist-prefix}-item-hover-bg: #f5f5f5;
+
+  // Border color
+  --@{mist-prefix}-border-color-base: hsv(
+    0,
+    0,
+    85%
+  ); // base border outline a component
+  --@{mist-prefix}-border-color-split: hsv(
+    0,
+    0,
+    94%
+  ); // split border inside a component
+
+  --@{mist-prefix}-background-color-light: hsv(
+    0,
+    0,
+    98%
+  ); // background of header and selected item
+  --@{mist-prefix}-background-color-base: hsv(
+    0,
+    0,
+    96%
+  ); // Default grey background color
+
+  // Disabled states
+  --@{mist-prefix}-disabled-color: fade(#000, 25%);
+  --@{mist-prefix}-disabled-color-dark: fade(#fff, 35%);
+
+  // Tree
+  // ---
+  --@{mist-prefix}-tree-bg: @component-background;
+
+  // List
+  // ---
+  --@{mist-prefix}-list-customize-card-bg: @component-background;
+
+  // Shadow
+  // ---
+  --@{mist-prefix}-shadow-color: rgba(0, 0, 0, 0.15);
+  --@{mist-prefix}-shadow-color-inverse: @component-background;
+  --@{mist-prefix}-box-shadow-base: @shadow-2;
+  --@{mist-prefix}-shadow-1-up: 0 -6px 16px -8px rgba(0, 0, 0, 0.08),
+    0 -9px 28px 0 rgba(0, 0, 0, 0.05), 0 -12px 48px 16px rgba(0, 0, 0, 0.03);
+  --@{mist-prefix}-shadow-1-down: 0 6px 16px -8px rgba(0, 0, 0, 0.08),
+    0 9px 28px 0 rgba(0, 0, 0, 0.05), 0 12px 48px 16px rgba(0, 0, 0, 0.03);
+  --@{mist-prefix}-shadow-1-right: 6px 0 16px -8px rgba(0, 0, 0, 0.08),
+    9px 0 28px 0 rgba(0, 0, 0, 0.05), 12px 0 48px 16px rgba(0, 0, 0, 0.03);
+  --@{mist-prefix}-shadow-2: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
+    0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+
+  // Buttons
+  // ---
+  --@{mist-prefix}-btn-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+  --@{mist-prefix}-btn-primary-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+  --@{mist-prefix}-btn-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+  --@{mist-prefix}-btn-default-bg: @component-background;
+  --@{mist-prefix}-btn-default-ghost-color: @component-background;
+  --@{mist-prefix}-btn-default-ghost-border: @component-background;
+  --@{mist-prefix}-btn-text-hover-bg: rgba(0, 0, 0, 0.018);
+  --@{mist-prefix}-btn-text-hover-bg-active: fadein(rgba(0, 0, 0, 0.018), 1%);
 }
 
 // -------- Colors -----------
@@ -162,9 +236,9 @@ html {
 // ---
 
 // Background color for `<body>`
-@body-background: #fff;
+@body-background: ~"var(--@{mist-prefix}-body-background)";
 // Base background color for most components
-@component-background: #fff;
+@component-background: ~"var(--@{mist-prefix}-component-background)";
 // Popover background color
 @popover-background: @component-background;
 @popover-customize-border-color: @border-color-split;
@@ -173,12 +247,12 @@ html {
   "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 @code-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier,
   monospace;
-@text-color: fade(@black, 85%);
-@text-color-secondary: fade(@black, 45%);
-@text-color-inverse: @white;
+@text-color: ~"var(--@{mist-prefix}-text-color)";
+@text-color-secondary: ~"var(--@{mist-prefix}-text-color-secondary)";
+@text-color-inverse: ~"var(--@{mist-prefix}-text-color-inverse)";
 @icon-color: inherit;
-@icon-color-hover: fade(@black, 75%);
-@heading-color: fade(@black, 85%);
+@icon-color-hover: ~"var(--@{mist-prefix}-icon-color-hover)";
+@heading-color: ~"var(--@{mist-prefix}-heading-color)";
 @text-color-dark: fade(@white, 85%);
 @text-color-secondary-dark: fade(@white, 65%);
 @text-selection-bg: @primary-color;
@@ -223,7 +297,7 @@ html {
 // The background colors for active and hover states for things like
 // list items or table cells.
 @item-active-bg: @primary-1;
-@item-hover-bg: #f5f5f5;
+@item-hover-bg:~ "var(--@{mist-prefix}-item-hover-bg)";
 
 // ICONFONT
 @iconfont-css-prefix: anticon;
@@ -254,8 +328,8 @@ html {
 @ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1);
 
 // Border color
-@border-color-base: hsv(0, 0, 85%); // base border outline a component
-@border-color-split: hsv(0, 0, 94%); // split border inside a component
+@border-color-base: ~"var(--@{mist-prefix}-border-color-base)"; // base border outline a component
+@border-color-split: ~"var(--@{mist-prefix}-border-color-split)"; // split border inside a component
 @border-color-inverse: @white;
 @border-width-base: 1px; // width of the border for a component
 @border-style-base: solid; // style of a components border
@@ -266,33 +340,25 @@ html {
 @outline-color: @primary-color; // No use anymore
 @outline-fade: 20%;
 
-@background-color-light: hsv(
-  0,
-  0,
-  98%
-); // background of header and selected item
-@background-color-base: hsv(0, 0, 96%); // Default grey background color
+@background-color-light:~ "var(--@{mist-prefix}-background-color-light)"; // background of header and selected item
+@background-color-base: ~"var(--@{mist-prefix}-background-color-base)"; // Default grey background color
 
 // Disabled states
-@disabled-color: fade(#000, 25%);
+@disabled-color: ~"var(--@{mist-prefix}-disabled-color)";
 @disabled-bg: @background-color-base;
 @disabled-active-bg: tint(@black, 90%);
-@disabled-color-dark: fade(#fff, 35%);
+@disabled-color-dark: ~"var(--@{mist-prefix}-disabled-color-dark)";
 
 // Shadow
-@shadow-color: rgba(0, 0, 0, 0.15);
+@shadow-color: ~"var(--@{mist-prefix}-shadow-color)";
 @shadow-color-inverse: @component-background;
 @box-shadow-base: @shadow-2;
-@shadow-1-up: 0 -6px 16px -8px rgba(0, 0, 0, 0.08),
-  0 -9px 28px 0 rgba(0, 0, 0, 0.05), 0 -12px 48px 16px rgba(0, 0, 0, 0.03);
-@shadow-1-down: 0 6px 16px -8px rgba(0, 0, 0, 0.08),
-  0 9px 28px 0 rgba(0, 0, 0, 0.05), 0 12px 48px 16px rgba(0, 0, 0, 0.03);
+@shadow-1-up: ~"var(--@{mist-prefix}-shadow-1-up)";
+@shadow-1-down: ~"var(--@{mist-prefix}-shadow-1-down)";
 @shadow-1-left: -6px 0 16px -8px rgba(0, 0, 0, 0.08),
   -9px 0 28px 0 rgba(0, 0, 0, 0.05), -12px 0 48px 16px rgba(0, 0, 0, 0.03);
-@shadow-1-right: 6px 0 16px -8px rgba(0, 0, 0, 0.08),
-  9px 0 28px 0 rgba(0, 0, 0, 0.05), 12px 0 48px 16px rgba(0, 0, 0, 0.03);
-@shadow-2: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08),
-  0 9px 28px 8px rgba(0, 0, 0, 0.05);
+@shadow-1-right: ~"var(--@{mist-prefix}-shadow-1-right)";
+@shadow-2: ~"var(--@{mist-prefix}-shadow-2)";
 
 // Buttons
 @btn-font-weight: 400;
@@ -300,15 +366,15 @@ html {
 @btn-border-radius-sm: @border-radius-base;
 @btn-border-width: @border-width-base;
 @btn-border-style: @border-style-base;
-@btn-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
-@btn-primary-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
-@btn-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+@btn-shadow: ~"var(--@{mist-prefix}-btn-shadow)";
+@btn-primary-shadow: ~"var(--@{mist-prefix}-btn-primary-shadow)";
+@btn-text-shadow: ~"var(--@{mist-prefix}-btn-text-shadow)";
 
 @btn-primary-color: #fff;
 @btn-primary-bg: @primary-color;
 
 @btn-default-color: @text-color;
-@btn-default-bg: @component-background;
+@btn-default-bg: ~"var(--@{mist-prefix}-btn-default-bg)";
 @btn-default-border: @border-color-base;
 
 @btn-danger-color: #fff;
@@ -319,9 +385,9 @@ html {
 @btn-disable-bg: @disabled-bg;
 @btn-disable-border: @border-color-base;
 
-@btn-default-ghost-color: @component-background;
+@btn-default-ghost-color: ~"var(--@{mist-prefix}-btn-default-ghost-color)";
 @btn-default-ghost-bg: transparent;
-@btn-default-ghost-border: @component-background;
+@btn-default-ghost-border: ~"var(--@{mist-prefix}-btn-default-ghost-border)";
 
 @btn-font-size-lg: @font-size-lg;
 @btn-font-size-sm: @font-size-base;
@@ -349,7 +415,8 @@ html {
 @btn-group-border: @primary-5;
 
 @btn-link-hover-bg: transparent;
-@btn-text-hover-bg: rgba(0, 0, 0, 0.018);
+@btn-text-hover-bg: ~"var(--@{mist-prefix}-btn-text-hover-bg)";
+@btn-text-hover-bg-active: ~"var(--@{mist-prefix}-btn-text-hover-bg-active)";
 
 // Checkbox
 @checkbox-size: 16px;
@@ -988,7 +1055,7 @@ html {
 
 // Tree
 // ---
-@tree-bg: @component-background;
+@tree-bg: ~"var(--@{mist-prefix}-tree-bg)";
 @tree-title-height: 24px;
 @tree-child-padding: 18px;
 @tree-directory-selected-color: #fff;
@@ -1073,7 +1140,7 @@ html {
 @list-item-meta-margin-bottom: @padding-md;
 @list-item-meta-avatar-margin-right: @padding-md;
 @list-item-meta-title-margin-bottom: @padding-sm;
-@list-customize-card-bg: @component-background;
+@list-customize-card-bg: ~"var(--@{mist-prefix}-list-customize-card-bg)";
 @list-item-meta-description-font-size: @font-size-base;
 
 // Statistic

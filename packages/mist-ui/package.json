@@ -38,10 +38,11 @@
   "author": "aibayanyu",
   "license": "MIT",
   "dependencies": {
+    "@mist-desgin/icons": "workspace:*",
+    "@vueuse/core": "^7.6.2",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
-    "vue": "^3.2.29",
-    "@mist-desgin/icons": "workspace:*"
+    "vue": "^3.2.29"
   },
   "files": [
     "es",
