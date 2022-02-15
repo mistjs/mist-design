@@ -10,8 +10,8 @@ export const affixProps = {
     default: undefined,
   },
   target: {
-    type: Object as PropType<Window | HTMLElement | null>,
-    default: null,
+    type: Function as PropType<() => Window | HTMLElement | null>,
+    default: undefined,
   },
 };
 
