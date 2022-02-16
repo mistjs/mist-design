@@ -106,9 +106,7 @@ export default defineComponent({
       }
     };
 
-    const updatePosition = useThrottleFn(() => {
-      measure();
-    }, 150);
+    const updatePosition = measure;
 
     const onScroll = useThrottleFn(() => measure(), 10);
 

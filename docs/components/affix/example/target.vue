@@ -1,7 +1,7 @@
 <template>
   <div class="scrollable-container" ref="target">
     <div class="background">
-      <m-affix :target="() => target" :offsetBottom="30">
+      <m-affix :target="() => target" ref="affix">
         <m-button type="primary">Fixed at the top of container</m-button>
       </m-affix>
     </div>
