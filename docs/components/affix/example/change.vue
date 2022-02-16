@@ -1,4 +1,5 @@
 <template>
+  <div></div>
   <m-affix :offsetTop="offsetTop" @change="onChange">
     <m-button>120px to affix top</m-button>
   </m-affix>
