@@ -5,3 +5,75 @@ body{
 h1, h2, h3, h4, h5, h6{
     color: var(--c-text);
 }
+
+.grid-demo .mist-row>div{
+    border-bottom: 0;
+    color: #fff;
+    text-align: center;
+    padding: 30px 0;
+    font-size: 18px;
+    border: none;
+}
+
+
+[id^=components-grid-demo-] .code-block-demo .mist-row>div{
+    margin-top: 8px;
+    min-height: 30px;
+    margin-bottom:8px;
+    border-bottom: 8px;
+    color: #fff;
+    text-align: center;
+    border-radius: 0;
+
+}
+
+.grid-demo .demo-row{
+    overflow: hidden;
+    background-image: linear-gradient(90deg,#f5f5f5 4.16666667%,transparent 4.16666667%,transparent 8.33333333%,#f5f5f5 8.33333333%,#f5f5f5 12.5%,transparent 12.5%,transparent 16.66666667%,#f5f5f5 16.66666667%,#f5f5f5 20.83333333%,transparent 20.83333333%,transparent 25%,#f5f5f5 25%,#f5f5f5 29.16666667%,transparent 29.16666667%,transparent 33.33333333%,#f5f5f5 33.33333333%,#f5f5f5 37.5%,transparent 37.5%,transparent 41.66666667%,#f5f5f5 41.66666667%,#f5f5f5 45.83333333%,transparent 45.83333333%,transparent 50%,#f5f5f5 50%,#f5f5f5 54.16666667%,transparent 54.16666667%,transparent 58.33333333%,#f5f5f5 58.33333333%,#f5f5f5 62.5%,transparent 62.5%,transparent 66.66666667%,#f5f5f5 66.66666667%,#f5f5f5 70.83333333%,transparent 70.83333333%,transparent 75%,#f5f5f5 75%,#f5f5f5 79.16666667%,transparent 79.16666667%,transparent 83.33333333%,#f5f5f5 83.33333333%,#f5f5f5 87.5%,transparent 87.5%,transparent 91.66666667%,#f5f5f5 91.66666667%,#f5f5f5 95.83333333%,transparent 95.83333333%);
+}
+
+
+.grid-demo .mist-row .demo-col-1, [id^=components-grid-demo-] .mist-row .demo-col-1{
+    background:rgba(19,194,194,.75);
+}
+
+.grid-demo .mist-row .demo-col-2, [id^=components-grid-demo-] .mist-row .demo-col-2, .grid-demo .code-block-demo .mist-row .demo-col-2, [id^=components-grid-demo-] .code-block-demo .mist-row .demo-col-2{
+    background:rgba(19,194,194,.5);
+}
+
+.grid-demo .mist-row .demo-col-3, [id^=components-grid-demo-] .mist-row .demo-col-3, .grid-demo .code-block-demo .mist-row .demo-col-3, [id^=components-grid-demo-] .code-block-demo .mist-row .demo-col-3{
+    color:#999;
+    background:rgba(255,255,255,.2);
+}
+.grid-demo .mist-row .demo-col-4, [id^=components-grid-demo-] .mist-row .demo-col-4, .grid-demo .code-block-demo .mist-row .demo-col-4, [id^=components-grid-demo-] .code-block-demo .mist-row .demo-col-4{
+    background:rgba(19,194,194,.6);
+}
+.grid-demo .mist-row .demo-col-5, [id^=components-grid-demo-] .mist-row .demo-col-5, .grid-demo .code-block-demo .mist-row .demo-col-5, [id^=components-grid-demo-] .code-block-demo .mist-row .demo-col-5{
+    color:#999;
+    background:rgba(255,255,255,.2);
+}
+.grid-demo .code-block-demo .mist-row>div:not(.gutter-row), [id^=components-grid-demo-] .code-block-demo .mist-row>div:not(.gutter-row){
+    padding:16px 0;
+    background:#13c2c2;
+}
+.grid-demo .code-block-demo .mist-row>div:not(.gutter-row):nth-child(2n + 1), [id^=components-grid-demo-] .code-block-demo .mist-row>div:not(.gutter-row):nth-child(2n + 1){
+    background:rgba(19,194,194,.75)
+}
+
+html.dark .grid-demo .demo-row{
+ background-image: linear-gradient(90deg, #1d1d1d 4.16666667%, transparent 4.16666667%, transparent 8.33333333%, #1d1d1d 8.33333333%, #1d1d1d 12.5%, transparent 12.5%, transparent 16.66666667%, #1d1d1d 16.66666667%, #1d1d1d 20.83333333%, transparent 20.83333333%, transparent 25%, #1d1d1d 25%, #1d1d1d 29.16666667%, transparent 29.16666667%, transparent 33.33333333%, #1d1d1d 33.33333333%, #1d1d1d 37.5%, transparent 37.5%, transparent 41.66666667%, #1d1d1d 41.66666667%, #1d1d1d 45.83333333%, transparent 45.83333333%, transparent 50%, #1d1d1d 50%, #1d1d1d 54.16666667%, transparent 54.16666667%, transparent 58.33333333%, #1d1d1d 58.33333333%, #1d1d1d 62.5%, transparent 62.5%, transparent 66.66666667%, #1d1d1d 66.66666667%, #1d1d1d 70.83333333%, transparent 70.83333333%, transparent 75%, #1d1d1d 75%, #1d1d1d 79.16666667%, transparent 79.16666667%, transparent 83.33333333%, #1d1d1d 83.33333333%, #1d1d1d 87.5%, transparent 87.5%, transparent 91.66666667%, #1d1d1d 91.66666667%, #1d1d1d 95.83333333%, transparent 95.83333333%);
+}
+.grid-demo .mist-row{
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.theme-default-content:not(.custom){
+    max-width: 100%;
+}
+.page-meta{
+    max-width: 100%;
+}
+.page-nav{
+    max-width: 100%;
+}

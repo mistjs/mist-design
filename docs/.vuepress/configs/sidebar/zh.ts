@@ -6,5 +6,6 @@ export const zh: SidebarConfig = {
     "/components/button/",
     "/components/affix/",
     "/components/divider/",
+    "/components/grid/",
   ],
 };
