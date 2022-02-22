@@ -1,10 +1,10 @@
-import { ExtractPropTypes, inject, PropType, provide, reactive } from "vue";
+import { ExtractPropTypes, inject, PropType, provide, reactive } from 'vue';
 
-export const MIST_CONFIG_PROVIDER_SYMBOL = Symbol(
-  "MIST_CONFIG_PROVIDER_SYMBOL"
-);
+export const MIST_CONFIG_PROVIDER_SYMBOL = Symbol('MIST_CONFIG_PROVIDER_SYMBOL');
 
-export type DirectionType = "rtl" | "ltr";
+export type DirectionType = 'rtl' | 'ltr' | undefined;
+
+export type SizeType = 'small' | 'middle' | 'large' | undefined;
 
 export interface ThemeColorConfig {
   default?: string;
@@ -18,30 +18,25 @@ export interface ThemeColorConfig {
   5?: string;
   6?: string;
   7?: string;
-  "deprecated-pure"?: string;
-  "deprecated-l-35"?: string;
-  "deprecated-l-20"?: string;
-  "deprecated-t-20"?: string;
-  "deprecated-t-50"?: string;
-  "deprecated-f-12"?: string;
-  "active-deprecated-f-30"?: string;
-  "active-deprecated-d-02"?: string;
-  "deprecated-bg"?: string;
-  "deprecated-border"?: string;
+  'deprecated-pure'?: string;
+  'deprecated-l-35'?: string;
+  'deprecated-l-20'?: string;
+  'deprecated-t-20'?: string;
+  'deprecated-t-50'?: string;
+  'deprecated-f-12'?: string;
+  'active-deprecated-f-30'?: string;
+  'active-deprecated-d-02'?: string;
+  'deprecated-bg'?: string;
+  'deprecated-border'?: string;
 }
 
 export type OtherThemeColor = Pick<
   ThemeColorConfig,
-  "hover" &
-    "active" &
-    "outline" &
-    "deprecated-border" &
-    "deprecated-bg" &
-    "default"
+  'hover' & 'active' & 'outline' & 'deprecated-border' & 'deprecated-bg' & 'default'
 >;
 
 export interface ThemeColor {
-  primary?: Omit<ThemeColorConfig, "deprecated-bg" & "deprecated-border">;
+  primary?: Omit<ThemeColorConfig, 'deprecated-bg' & 'deprecated-border'>;
   success?: OtherThemeColor;
   error?: OtherThemeColor;
   warning?: OtherThemeColor;
@@ -56,11 +51,11 @@ export interface ConfigProviderThemeOptions {
 export const configProviderProps = {
   locale: {
     type: String,
-    default: "zh-CN",
+    default: 'zh-CN',
   },
   prefixCls: {
     type: String,
-    default: "mist",
+    default: 'mist',
   },
   theme: {
     type: Object as PropType<ConfigProviderThemeOptions>,
@@ -70,7 +65,7 @@ export const configProviderProps = {
   },
   direction: {
     type: String as PropType<DirectionType>,
-    default: "ltr",
+    default: 'ltr',
   },
   autoInsertSpaceInButton: {
     type: Boolean,
@@ -81,12 +76,12 @@ export const configProviderProps = {
 export type ConfigProviderProps = ExtractPropTypes<typeof configProviderProps>;
 
 const defaultConfigInject = reactive<Partial<ConfigProviderProps>>({
-  prefixCls: "mist",
-  locale: "zh-CN",
+  prefixCls: 'mist',
+  locale: 'zh-CN',
   theme: {
     dark: false,
   },
-  direction: "ltr",
+  direction: 'ltr',
   autoInsertSpaceInButton: true,
 });
 
@@ -95,8 +90,5 @@ export const useConfigProvider = (provider: ConfigProviderProps) => {
 };
 
 export const useConfigInject = (): Partial<ConfigProviderProps> => {
-  return inject<Partial<ConfigProviderProps>>(
-    MIST_CONFIG_PROVIDER_SYMBOL,
-    defaultConfigInject
-  );
+  return inject<Partial<ConfigProviderProps>>(MIST_CONFIG_PROVIDER_SYMBOL, defaultConfigInject);
 };

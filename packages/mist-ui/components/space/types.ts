@@ -1,8 +1,8 @@
-import { ExtractPropTypes, PropType, VNode } from "vue";
-export type SpaceAlignType = "start" | "end" | "center" | "baseline";
-export type SpaceDirection = "vertical" | "horizontal";
-export type SpaceSizeType = "small" | "middle" | "large" | number;
-
+import { ExtractPropTypes, PropType, VNode } from 'vue';
+import type { SizeType } from '../config-provider';
+export type SpaceAlignType = 'start' | 'end' | 'center' | 'baseline';
+export type SpaceDirection = 'vertical' | 'horizontal';
+export type SpaceSize = SizeType | number;
 export const spaceProps = {
   align: {
     type: String as PropType<SpaceAlignType>,
@@ -10,11 +10,11 @@ export const spaceProps = {
   },
   direction: {
     type: String as PropType<SpaceDirection>,
-    default: "horizontal",
+    default: 'horizontal',
   },
   size: {
-    type: [String, Array] as PropType<SpaceSizeType | SpaceSizeType[]>,
-    default: "small",
+    type: [String, Array] as PropType<SpaceSize | [SpaceSize, SpaceSize]>,
+    default: 'small',
   },
   split: {
     type: Object as PropType<VNode>,

@@ -23,38 +23,27 @@
 ## 代码演示
 
 <br />
-
-<demo title="按钮类型" id="components-button-demo-basic" src="./example/basic.vue" desc="按钮有五种类型：主按钮、次按钮、虚线按钮、文本按钮和链接按钮。主按钮在同一个操作区域最多出现一次。"></demo>
-
-
-<demo title="图标按钮" id="components-button-demo-icons" src="./example/icons.vue" desc="当需要在`Button`内嵌入`Icon`时，可以设置`icon`属性或者插槽，或者直接在`Button`内使用`Icon`组件。<br/> 如果想控制`Icon`具体的位置，只能直接使用`Icon`组件，而非`icon`属性或者插槽。"></demo>
-
-
-<demo title="按钮尺寸" id="components-button-demo-size" src="./example/size.vue" desc="按钮有大、中、小三种尺寸。<br/>通过设置`size`为`large` `small`分别把按钮设为大、小尺寸。若不设置`size`，则尺寸为中。"></demo>
-
-
-<demo title="不可用状态" id="components-button-demo-disabled" src="./example/disabled.vue" desc="添加`disabled`属性即可让按钮处于不可用状态，同时按钮样式也会改变。"></demo>
-
-
-<demo title="加载中状态" id="components-button-demo-loading" src="./example/loading.vue" desc="添加`loading`属性即可让按钮处于加载状态，最后两个按钮演示点击后进入加载状态。"></demo>
-
-
-<demo title="幽灵按钮" id="components-button-demo-ghost" src="./example/ghost.vue" desc="幽灵按钮将按钮的内容反色，背景变为透明，常用在有色背景上。"></demo>
-
-
-<demo title="多个按钮组合" id="components-button-demo-dropdown-btn" src="./example/dropdownBtn.vue" desc="按钮组合使用时，推荐使用 1 个主操作 + n 个次操作，3 个以上操作时把更多操作放到`Dropdown.Button`中组合使用。"></demo>
-
-
-<demo title="Block按钮" id="components-button-demo-block" src="./example/block.vue" desc="`block`属性将使按钮适合其父宽度。"></demo>
-
-
-<demo title="危险按钮" id="components-button-demo-danger" src="./example/danger.vue" desc="危险作为一种按钮属性而不是按钮类型。"></demo>
-
-
-<demo title="按钮组" id="components-button-demo-group" src="./example/group.vue" desc="这是一个多个按钮组个的例子，借助`Button.Group`实现。"></demo>
+<m-row :gutter="[10,10]">
+    <m-col :span="12" >
+        <demo title="按钮类型" id="components-button-demo-basic" src="./example/basic.vue" desc="按钮有五种类型：主按钮、次按钮、虚线按钮、文本按钮和链接按钮。主按钮在同一个操作区域最多出现一次。"></demo>
+        <demo title="按钮尺寸" id="components-button-demo-size" src="./example/size.vue" desc="按钮有大、中、小三种尺寸。<br/>通过设置`size`为`large` `small`分别把按钮设为大、小尺寸。若不设置`size`，则尺寸为中。"></demo>
+        <demo title="加载中状态" id="components-button-demo-loading" src="./example/loading.vue" desc="添加`loading`属性即可让按钮处于加载状态，最后两个按钮演示点击后进入加载状态。"></demo>
+        <demo title="多个按钮组合" id="components-button-demo-dropdown-btn" src="./example/dropdownBtn.vue" desc="按钮组合使用时，推荐使用 1 个主操作 + n 个次操作，3 个以上操作时把更多操作放到`Dropdown.Button`中组合使用。"></demo>
+        <demo title="危险按钮" id="components-button-demo-danger" src="./example/danger.vue" desc="危险作为一种按钮属性而不是按钮类型。"></demo>
+        <demo title="按钮组" id="components-button-demo-group" src="./example/group.vue" desc="这是一个多个按钮组个的例子，借助`Button.Group`实现。"></demo>
+    </m-col>
+    <m-col :span="12">
+        <demo title="图标按钮" id="components-button-demo-icons" src="./example/icons.vue" desc="当需要在`Button`内嵌入`Icon`时，可以设置`icon`属性或者插槽，或者直接在`Button`内使用`Icon`组件。<br/> 如果想控制`Icon`具体的位置，只能直接使用`Icon`组件，而非`icon`属性或者插槽。"></demo>
+        <demo title="不可用状态" id="components-button-demo-disabled" src="./example/disabled.vue" desc="添加`disabled`属性即可让按钮处于不可用状态，同时按钮样式也会改变。"></demo>
+        <demo title="幽灵按钮" id="components-button-demo-ghost" src="./example/ghost.vue" desc="幽灵按钮将按钮的内容反色，背景变为透明，常用在有色背景上。"></demo>
+        <demo title="Block按钮" id="components-button-demo-block" src="./example/block.vue" desc="`block`属性将使按钮适合其父宽度。"></demo>
+    </m-col>
+</m-row>
 
 
 ## API
+
+<br/>
 
 通过设置 Button 的属性来产生不同的按钮样式，推荐顺序为：`type` -> `shape` -> `size` -> `loading` -> `disabled`。
 

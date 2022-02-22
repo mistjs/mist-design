@@ -15,7 +15,7 @@ importers:
       '@vue/test-utils': ^2.0.0-rc.18
       '@vuepress/plugin-search': ^2.0.0-beta.35
       '@vuepress/theme-default': ^2.0.0-beta.35
-      '@yanyu-fe/vuepress-plugin-code-block': ^0.0.11
+      '@yanyu-fe/vuepress-plugin-code-block': ^0.0.12
       cypress: ^9.3.1
       eslint: ^8.5.0
       eslint-plugin-cypress: ^2.12.1
@@ -46,7 +46,7 @@ importers:
       '@vue/test-utils': 2.0.0-rc.18_vue@3.2.30
       '@vuepress/plugin-search': 2.0.0-beta.35
       '@vuepress/theme-default': 2.0.0-beta.35_webpack@5.68.0
-      '@yanyu-fe/vuepress-plugin-code-block': 0.0.11_webpack@5.68.0
+      '@yanyu-fe/vuepress-plugin-code-block': 0.0.12_webpack@5.68.0
       cypress: 9.4.1
       eslint: 8.8.0
       eslint-plugin-cypress: 2.12.1_eslint@8.8.0
@@ -5409,8 +5409,8 @@ packages:
     resolution: {integrity: sha1-0pHGpOl5ibXGHZrPOWrk/hM6cY0=, tarball: '@xtuc/long/download/@xtuc/long-4.2.2.tgz'}
     dev: true
 
-  /@yanyu-fe/vuepress-plugin-code-block/0.0.11_webpack@5.68.0:
-    resolution: {integrity: sha512-E/hscovXtjZTx4HJ3T8dj5ogq/EAWA9xbocC+ZVaEHBpv49uEihYd5V7wJf7dIx4X1hWalSw91+A9DYqz585+w==}
+  /@yanyu-fe/vuepress-plugin-code-block/0.0.12_webpack@5.68.0:
+    resolution: {integrity: sha512-KCbfJydlGHWwwlGhNConAiASxbqlrTVeN542rMcYhn55yUu+8cqCGr4k5Rn4ZCTTPg6L/cGivQ6ihUyGR3UtBA==}
     dependencies:
       '@vuepress/cli': 2.0.0-beta.35
       '@vuepress/core': 2.0.0-beta.35
