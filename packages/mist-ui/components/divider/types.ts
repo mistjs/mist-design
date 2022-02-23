@@ -1,8 +1,8 @@
-import { CSSProperties, ExtractPropTypes, PropType } from "vue";
+import { CSSProperties, ExtractPropTypes, PropType } from 'vue';
 
-export type OrientationType = "left" | "center" | "right";
+export type OrientationType = 'left' | 'center' | 'right';
 
-export type DividerType = "horizontal" | "vertical";
+export type DividerType = 'horizontal' | 'vertical';
 
 export const dividerProps = {
   dashed: {
@@ -11,7 +11,7 @@ export const dividerProps = {
   },
   orientation: {
     type: String as PropType<OrientationType>,
-    default: "center",
+    default: 'center',
   },
   orientationMargin: {
     type: [String, Number],
@@ -23,7 +23,7 @@ export const dividerProps = {
   },
   type: {
     type: String as PropType<DividerType>,
-    default: "horizontal",
+    default: 'horizontal',
   },
 };
 

@@ -5,17 +5,17 @@ import {
   onBeforeUnmount,
   onMounted,
   ref,
-} from "vue";
-import { ComponentInternalInstance } from "vue";
-import { findDOMNode, isHidden, isNotGrey } from "./hooks/tools";
+} from 'vue';
+import { ComponentInternalInstance } from 'vue';
+import { findDOMNode, isHidden, isNotGrey } from './hooks/tools';
 // @ts-ignore
-import raf from "./raf";
+import raf from './raf';
 // @ts-ignore
-import TransitionEvents from "./css-animation/Event";
+import TransitionEvents from './css-animation/Event';
 let styleForPesudo: any;
 export default defineComponent({
-  name: "ProWave",
-  props: ["insertExtraNode"],
+  name: 'ProWave',
+  props: ['insertExtraNode'],
   setup(_props, { slots }) {
     const insertExtraNode = computed(() => _props.insertExtraNode);
     let vm: ComponentInternalInstance | null;
@@ -47,22 +47,17 @@ export default defineComponent({
 
     const getAttributeName = () => {
       return insertExtraNode.value
-        ? "mist-click-animating"
-        : "mist-click-animating-without-extra-node";
+        ? 'mist-click-animating'
+        : 'mist-click-animating-without-extra-node';
     };
     const resetEffect = (node: Element) => {
-      if (!node || node === extraNode.value || !(node instanceof Element))
-        return;
+      if (!node || node === extraNode.value || !(node instanceof Element)) return;
       const attrName = getAttributeName();
-      node.setAttribute(attrName, "false");
+      node.setAttribute(attrName, 'false');
       if (styleForPesudo) {
-        styleForPesudo.innerHTML = "";
+        styleForPesudo.innerHTML = '';
       }
-      if (
-        insertExtraNode.value &&
-        extraNode.value &&
-        node.contains(extraNode.value)
-      ) {
+      if (insertExtraNode.value && extraNode.value && node.contains(extraNode.value)) {
         node.removeChild(extraNode.value);
       }
       TransitionEvents.removeStartEventListener(node, onTransitionStart);
@@ -70,22 +65,21 @@ export default defineComponent({
     };
 
     const effectClick = (node: Element, waveColor: string) => {
-      if (!node || isHidden(node) || node.className.indexOf("-leave") >= 0)
-        return;
-      extraNode.value = document.createElement("div");
+      if (!node || isHidden(node) || node.className.indexOf('-leave') >= 0) return;
+      extraNode.value = document.createElement('div');
       const myExtraNode = extraNode.value;
-      myExtraNode.className = "mist-click-animating-node";
+      myExtraNode.className = 'mist-click-animating-node';
       const attrName = getAttributeName();
       node.removeAttribute(attrName);
-      node.setAttribute(attrName, "true");
-      styleForPesudo = styleForPesudo || document.createElement("style");
+      node.setAttribute(attrName, 'true');
+      styleForPesudo = styleForPesudo || document.createElement('style');
       if (
         waveColor &&
-        waveColor !== "#ffffff" &&
-        waveColor !== "rgb(255,255,255)" &&
+        waveColor !== '#ffffff' &&
+        waveColor !== 'rgb(255,255,255)' &&
         isNotGrey(waveColor) &&
         !/rgba\(\d*,\d*,\d*,0\)/.test(waveColor) &&
-        waveColor !== "transparent"
+        waveColor !== 'transparent'
       ) {
         myExtraNode.style.borderColor = waveColor;
         styleForPesudo.innerHTML = `
@@ -111,7 +105,7 @@ export default defineComponent({
       }
     };
     const onTransitionEnd = (e: any) => {
-      if (!e || e.animationName !== "fadeEffect") return;
+      if (!e || e.animationName !== 'fadeEffect') return;
       resetEffect(e.target);
     };
     const bindAnimationEvent = (node: Element) => {
@@ -119,24 +113,21 @@ export default defineComponent({
       if (
         !node ||
         !node.getAttribute ||
-        node.getAttribute("disabled") ||
-        node.className.indexOf("disabled") >= 0
+        node.getAttribute('disabled') ||
+        node.className.indexOf('disabled') >= 0
       )
         return;
       // 点击事件
       const onClick = (e: any) => {
-        if (e.target.tagName === "INPUT" || isHidden(e)) return;
+        if (e.target.tagName === 'INPUT' || isHidden(e)) return;
         // 重置效果
         resetEffect(node);
         // 获取颜色细节
         const waveColor =
-          getComputedStyle(node).getPropertyValue("border-top-color") || // Firefox Compatible
-          getComputedStyle(node).getPropertyValue("border-color") ||
-          getComputedStyle(node).getPropertyValue("background-color");
-        clickWaveTimeoutId.value = setTimeout(
-          () => effectClick(node, waveColor),
-          0
-        );
+          getComputedStyle(node).getPropertyValue('border-top-color') || // Firefox Compatible
+          getComputedStyle(node).getPropertyValue('border-color') ||
+          getComputedStyle(node).getPropertyValue('background-color');
+        clickWaveTimeoutId.value = setTimeout(() => effectClick(node, waveColor), 0);
         raf.cancel(animationStartId.value);
         animationStart.value = true;
         animationStartId.value = raf(() => {
@@ -144,11 +135,11 @@ export default defineComponent({
         }, 10);
       };
       // 事件监听
-      node.addEventListener("click", onClick, true);
+      node.addEventListener('click', onClick, true);
       return {
         cancel: () => {
           // 移除事件监听
-          node.removeEventListener("click", onClick, true);
+          node.removeEventListener('click', onClick, true);
         },
       };
     };

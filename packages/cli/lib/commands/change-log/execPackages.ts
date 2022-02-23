@@ -1,6 +1,6 @@
-import co from "co";
-import { filterMonorepoPkg } from "../../common";
-import minimist from "minimist";
+import co from 'co';
+import { filterMonorepoPkg } from '../../common';
+import minimist from 'minimist';
 co(function* () {
   const data = minimist(process.argv.slice(2));
   let source;

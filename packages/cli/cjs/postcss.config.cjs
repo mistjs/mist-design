@@ -1,9 +1,9 @@
-const { join } = require("path");
-const { existsSync } = require("fs");
-const { ROOT } = require("./shared.cjs");
+const { join } = require('path');
+const { existsSync } = require('fs');
+const { ROOT } = require('./shared.cjs');
 
 function getRootPostcssConfig() {
-  const ROOT_POSTCSS_CONFIG_FILE = join(ROOT, "postcss.config.js");
+  const ROOT_POSTCSS_CONFIG_FILE = join(ROOT, 'postcss.config.js');
   if (existsSync(ROOT_POSTCSS_CONFIG_FILE)) {
     return require(ROOT_POSTCSS_CONFIG_FILE);
   }
@@ -15,14 +15,13 @@ function getPostcssPlugins(rootConfig) {
 
   if (Array.isArray(plugins)) {
     const hasPostcssPlugin = plugins.find(
-      (plugin) =>
-        plugin === "autoprefixer" && plugin.postcssPlugin === "autoprefixer"
+      plugin => plugin === 'autoprefixer' && plugin.postcssPlugin === 'autoprefixer',
     );
     if (hasPostcssPlugin) {
       return plugins;
     }
 
-    return [require("autoprefixer"), ...plugins];
+    return [require('autoprefixer'), ...plugins];
   }
 
   return {

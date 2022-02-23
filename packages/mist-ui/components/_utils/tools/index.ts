@@ -1,1 +1,1 @@
-export * from "./resolveSlots";
+export * from './resolveSlots';

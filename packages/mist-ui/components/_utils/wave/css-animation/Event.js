@@ -1,36 +1,36 @@
 const START_EVENT_NAME_MAP = {
   transitionstart: {
-    transition: "transitionstart",
-    WebkitTransition: "webkitTransitionStart",
-    MozTransition: "mozTransitionStart",
-    OTransition: "oTransitionStart",
-    msTransition: "MSTransitionStart",
+    transition: 'transitionstart',
+    WebkitTransition: 'webkitTransitionStart',
+    MozTransition: 'mozTransitionStart',
+    OTransition: 'oTransitionStart',
+    msTransition: 'MSTransitionStart',
   },
 
   animationstart: {
-    animation: "animationstart",
-    WebkitAnimation: "webkitAnimationStart",
-    MozAnimation: "mozAnimationStart",
-    OAnimation: "oAnimationStart",
-    msAnimation: "MSAnimationStart",
+    animation: 'animationstart',
+    WebkitAnimation: 'webkitAnimationStart',
+    MozAnimation: 'mozAnimationStart',
+    OAnimation: 'oAnimationStart',
+    msAnimation: 'MSAnimationStart',
   },
 };
 
 const END_EVENT_NAME_MAP = {
   transitionend: {
-    transition: "transitionend",
-    WebkitTransition: "webkitTransitionEnd",
-    MozTransition: "mozTransitionEnd",
-    OTransition: "oTransitionEnd",
-    msTransition: "MSTransitionEnd",
+    transition: 'transitionend',
+    WebkitTransition: 'webkitTransitionEnd',
+    MozTransition: 'mozTransitionEnd',
+    OTransition: 'oTransitionEnd',
+    msTransition: 'MSTransitionEnd',
   },
 
   animationend: {
-    animation: "animationend",
-    WebkitAnimation: "webkitAnimationEnd",
-    MozAnimation: "mozAnimationEnd",
-    OAnimation: "oAnimationEnd",
-    msAnimation: "MSAnimationEnd",
+    animation: 'animationend',
+    WebkitAnimation: 'webkitAnimationEnd',
+    MozAnimation: 'mozAnimationEnd',
+    OAnimation: 'oAnimationEnd',
+    msAnimation: 'MSAnimationEnd',
   },
 };
 
@@ -38,15 +38,15 @@ const startEvents = [];
 const endEvents = [];
 
 function detectEvents() {
-  const testEl = document.createElement("div");
+  const testEl = document.createElement('div');
   const style = testEl.style;
 
-  if (!("AnimationEvent" in window)) {
+  if (!('AnimationEvent' in window)) {
     delete START_EVENT_NAME_MAP.animationstart.animation;
     delete END_EVENT_NAME_MAP.animationend.animation;
   }
 
-  if (!("TransitionEvent" in window)) {
+  if (!('TransitionEvent' in window)) {
     delete START_EVENT_NAME_MAP.transitionstart.transition;
     delete END_EVENT_NAME_MAP.transitionend.transition;
   }
@@ -70,7 +70,7 @@ function detectEvents() {
   process(END_EVENT_NAME_MAP, endEvents);
 }
 
-if (typeof window !== "undefined" && typeof document !== "undefined") {
+if (typeof window !== 'undefined' && typeof document !== 'undefined') {
   detectEvents();
 }
 
@@ -91,7 +91,7 @@ const TransitionEvents = {
       setTimeout(eventListener, 0);
       return;
     }
-    startEvents.forEach((startEvent) => {
+    startEvents.forEach(startEvent => {
       addEventListener(node, startEvent, eventListener);
     });
   },
@@ -100,7 +100,7 @@ const TransitionEvents = {
     if (startEvents.length === 0) {
       return;
     }
-    startEvents.forEach((startEvent) => {
+    startEvents.forEach(startEvent => {
       removeEventListener(node, startEvent, eventListener);
     });
   },
@@ -113,7 +113,7 @@ const TransitionEvents = {
       setTimeout(eventListener, 0);
       return;
     }
-    endEvents.forEach((endEvent) => {
+    endEvents.forEach(endEvent => {
       addEventListener(node, endEvent, eventListener);
     });
   },
@@ -122,7 +122,7 @@ const TransitionEvents = {
     if (endEvents.length === 0) {
       return;
     }
-    endEvents.forEach((endEvent) => {
+    endEvents.forEach(endEvent => {
       removeEventListener(node, endEvent, eventListener);
     });
   },

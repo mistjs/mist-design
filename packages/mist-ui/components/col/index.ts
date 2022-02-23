@@ -1,5 +1,5 @@
-import { Col } from "../grid";
-import { App, Plugin } from "vue";
+import { Col } from '../grid';
+import { App, Plugin } from 'vue';
 
 Col.install = (app: App) => {
   app.component(Col.name, Col);

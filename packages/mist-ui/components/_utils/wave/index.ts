@@ -1,2 +1,2 @@
-import MWave from "./wave";
+import MWave from './wave';
 export default MWave;

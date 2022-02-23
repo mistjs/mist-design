@@ -1,9 +1,8 @@
 let raf = (callback: FrameRequestCallback) => +setTimeout(callback, 16);
 let caf = (num: number) => clearTimeout(num);
 
-if (typeof window !== "undefined" && "requestAnimationFrame" in window) {
-  raf = (callback: FrameRequestCallback) =>
-    window.requestAnimationFrame(callback);
+if (typeof window !== 'undefined' && 'requestAnimationFrame' in window) {
+  raf = (callback: FrameRequestCallback) => window.requestAnimationFrame(callback);
   caf = (handle: number) => window.cancelAnimationFrame(handle);
 }
 
@@ -14,10 +13,7 @@ function cleanup(id: number) {
   rafIds.delete(id);
 }
 
-export default function wrapperRaf(
-  callback: () => void,
-  times?: number
-): number {
+export default function wrapperRaf(callback: () => void, times?: number): number {
   rafUUID += 1;
   const id = rafUUID;
   if (!times) times = 1;

@@ -1,8 +1,7 @@
-import canUseDom from "./canUseDom";
-import { isStyleSupport } from "./styleChecker";
+import canUseDom from './canUseDom';
+import { isStyleSupport } from './styleChecker';
 
-export const canUseDocElement = () =>
-  canUseDom() && window.document.documentElement;
+export const canUseDocElement = () => canUseDom() && window.document.documentElement;
 
 export { isStyleSupport };
 
@@ -17,14 +16,14 @@ export const detectFlexGapSupported = () => {
   }
 
   // create flex container with row-gap set
-  const flex = document.createElement("div");
-  flex.style.display = "flex";
-  flex.style.flexDirection = "column";
-  flex.style.rowGap = "1px";
+  const flex = document.createElement('div');
+  flex.style.display = 'flex';
+  flex.style.flexDirection = 'column';
+  flex.style.rowGap = '1px';
 
   // create two, elements inside it
-  flex.appendChild(document.createElement("div"));
-  flex.appendChild(document.createElement("div"));
+  flex.appendChild(document.createElement('div'));
+  flex.appendChild(document.createElement('div'));
 
   // append to the DOM (needed to obtain scrollHeight)
   document.body.appendChild(flex);

@@ -1,19 +1,19 @@
-import { defineComponent, toRef, watch } from "vue";
-import { configProviderProps, useConfigProvider } from "./types";
+import { defineComponent, toRef, watch } from 'vue';
+import { configProviderProps, useConfigProvider } from './types';
 export default defineComponent({
-  name: "MConfigProvider",
+  name: 'MConfigProvider',
   props: configProviderProps,
   setup(props, { slots }) {
-    const theme = toRef(props, "theme");
+    const theme = toRef(props, 'theme');
     useConfigProvider(props);
     watch(
       theme,
-      (val) => {
+      val => {
         if (val.dark) {
           // 处理数据
         }
       },
-      { deep: true }
+      { deep: true },
     );
     return () => {
       return slots.default && slots.default();

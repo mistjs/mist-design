@@ -1,16 +1,16 @@
-import fse from "fs-extra";
-import { join } from "path";
-import { build } from "vite";
-import { getMistBuildName, getPackageJson, LIB_DIR } from "../common/constant";
-import { getViteConfigForPackage } from "../config/vite.package";
-import { getViteStyleConfigForPackage } from "../config/vite.style";
+import fse from 'fs-extra';
+import { join } from 'path';
+import { build } from 'vite';
+import { getMistBuildName, getPackageJson, LIB_DIR } from '../common/constant';
+import { getViteConfigForPackage } from '../config/vite.package';
+import { getViteStyleConfigForPackage } from '../config/vite.style';
 
 // generate entry file for nuxt
 async function genEntryForSSR() {
   const name = getMistBuildName();
 
-  const cjsPath = join(LIB_DIR, "ssr.js");
-  const mjsPath = join(LIB_DIR, "ssr.mjs");
+  const cjsPath = join(LIB_DIR, 'ssr.js');
+  const mjsPath = join(LIB_DIR, 'ssr.mjs');
 
   const cjsContent = `'use strict';
 
@@ -23,10 +23,7 @@ if (process.env.NODE_ENV === 'production') {
 
   const mjsContent = `export * from './index.js';\n`;
 
-  return Promise.all([
-    fse.outputFile(cjsPath, cjsContent),
-    fse.outputFile(mjsPath, mjsContent),
-  ]);
+  return Promise.all([fse.outputFile(cjsPath, cjsContent), fse.outputFile(mjsPath, mjsContent)]);
 }
 
 export async function compileBundles() {
@@ -37,28 +34,28 @@ export async function compileBundles() {
     // umd bundle
     getViteConfigForPackage({
       minify: false,
-      formats: ["umd"],
-      external: ["vue"],
+      formats: ['umd'],
+      external: ['vue'],
     }),
     // umd bundle (minified)
     getViteConfigForPackage({
       minify: true,
-      formats: ["umd"],
-      external: ["vue"],
+      formats: ['umd'],
+      external: ['vue'],
     }),
     // esm/cjs bundle
     getViteConfigForPackage({
       minify: false,
-      formats: ["es", "cjs"],
-      external: ["vue", ...externals],
+      formats: ['es', 'cjs'],
+      external: ['vue', ...externals],
     }),
     // esm/cjs bundle (minified)
     // vite will not minify es bundle
     // see: https://github.com/vuejs/vue-next/issues/2860
     getViteConfigForPackage({
       minify: true,
-      formats: ["es", "cjs"],
-      external: ["vue", ...externals],
+      formats: ['es', 'cjs'],
+      external: ['vue', ...externals],
     }),
     // getViteStyleConfigForPackage({
     //   minify: true,
@@ -67,6 +64,6 @@ export async function compileBundles() {
     // }),
   ];
 
-  await Promise.all(configs.map((config) => build(config)));
+  await Promise.all(configs.map(config => build(config)));
   await genEntryForSSR();
 }

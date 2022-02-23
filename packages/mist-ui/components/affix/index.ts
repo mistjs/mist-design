@@ -1,7 +1,7 @@
-import Affix from "./affix";
-import { App, Plugin } from "vue";
+import Affix from './affix';
+import { App, Plugin } from 'vue';
 
-export * from "./types";
+export * from './types';
 Affix.install = (app: App) => {
   app.component(Affix.name, Affix);
   return app;

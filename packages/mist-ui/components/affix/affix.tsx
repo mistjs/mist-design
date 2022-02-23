@@ -8,19 +8,15 @@ import {
   reactive,
   shallowRef,
   toRefs,
-} from "vue";
-import { useConfigInject } from "../config-provider";
-import { affixProps } from "./types";
-import {
-  useEventListener,
-  useResizeObserver,
-  useThrottleFn,
-} from "@vueuse/core";
-import { getFixedBottom, getFixedTop, getTargetNode } from "./util";
+} from 'vue';
+import { useConfigInject } from '../config-provider';
+import { affixProps } from './types';
+import { useEventListener, useResizeObserver, useThrottleFn } from '@vueuse/core';
+import { getFixedBottom, getFixedTop, getTargetNode } from './util';
 export default defineComponent({
-  name: "MAffix",
+  name: 'MAffix',
   props: affixProps,
-  emits: ["change"],
+  emits: ['change'],
   setup(props, { slots, emit, expose }) {
     // 获取下面定义的根节点的信息
     const placeholderNode = shallowRef<HTMLDivElement>();
@@ -36,7 +32,7 @@ export default defineComponent({
     });
     // 定义类型
     const classes = computed<CSSProperties>(() => {
-      const pre = prefixCls.value + "-affix";
+      const pre = prefixCls.value + '-affix';
       return {
         [`${pre}`]: state.fixed,
       };
@@ -78,14 +74,10 @@ export default defineComponent({
         props.offsetBottom !== undefined
           ? undefined
           : getFixedTop(placeholderRect, targetRect, props.offsetTop);
-      const fixedBottom = getFixedBottom(
-        placeholderRect,
-        targetRect,
-        props.offsetBottom
-      );
+      const fixedBottom = getFixedBottom(placeholderRect, targetRect, props.offsetBottom);
       if (!fixedTop && !fixedBottom) {
         if (state.fixed) {
-          emit("change", !state.fixed);
+          emit('change', !state.fixed);
         }
         state.fixed = false;
         state.top = null;
@@ -93,7 +85,7 @@ export default defineComponent({
         return;
       }
       if (!state.fixed) {
-        emit("change", !state.fixed);
+        emit('change', !state.fixed);
       }
       state.fixed = true;
 
@@ -123,7 +115,7 @@ export default defineComponent({
       }
       state.timeout = setTimeout(() => {
         // 开启监听模式
-        useEventListener(targetNode, "scroll", onScroll);
+        useEventListener(targetNode, 'scroll', onScroll);
         useResizeObserver(document.documentElement, updatePosition);
         useResizeObserver(placeholderNode, updatePosition);
         // 第一次加载更新位置

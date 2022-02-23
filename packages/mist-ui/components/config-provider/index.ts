@@ -1,7 +1,7 @@
-import ConfigProvider from "./config-provider";
-import { App, Plugin } from "vue";
+import ConfigProvider from './config-provider';
+import { App, Plugin } from 'vue';
 
-export * from "./types";
+export * from './types';
 
 ConfigProvider.install = (app: App) => {
   app.component(ConfigProvider.name, ConfigProvider);

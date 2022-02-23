@@ -1,8 +1,6 @@
-import { Ref } from "vue";
+import { Ref } from 'vue';
 
-export const getScrollContainer = (
-  scrollContainer: Ref<Window | HTMLElement>
-) => {
+export const getScrollContainer = (scrollContainer: Ref<Window | HTMLElement>) => {
   if (scrollContainer.value === window) {
     return document.documentElement;
   } else {
@@ -22,13 +20,10 @@ export const getTargetNode = (target: Ref<Window | HTMLElement>): Rect => {
 export const getFixedTop = (
   placeholderReact: Rect,
   targetRect: Rect,
-  offsetTop: number | undefined
+  offsetTop: number | undefined,
 ) => {
   // TODO
-  if (
-    offsetTop !== undefined &&
-    targetRect.top > placeholderReact.top - offsetTop
-  ) {
+  if (offsetTop !== undefined && targetRect.top > placeholderReact.top - offsetTop) {
     return `${offsetTop + targetRect.top}px`;
   }
   return undefined;
@@ -38,13 +33,10 @@ export const getFixedTop = (
 export const getFixedBottom = (
   placeholderReact: Rect,
   targetRect: Rect,
-  offsetBottom: number | undefined
+  offsetBottom: number | undefined,
 ) => {
   // TODO
-  if (
-    offsetBottom !== undefined &&
-    targetRect.bottom < placeholderReact.bottom + offsetBottom
-  ) {
+  if (offsetBottom !== undefined && targetRect.bottom < placeholderReact.bottom + offsetBottom) {
     const targetBottomOffset = window.innerHeight - targetRect.bottom;
     if (targetBottomOffset < 0) return undefined;
     return `${offsetBottom + targetBottomOffset}px`;

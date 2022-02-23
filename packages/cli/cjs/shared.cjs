@@ -1,8 +1,8 @@
-const { join, dirname } = require("path");
-const { existsSync } = require("fs");
+const { join, dirname } = require('path');
+const { existsSync } = require('fs');
 
 function findRootDir(dir) {
-  if (existsSync(join(dir, "vant.config.mjs"))) {
+  if (existsSync(join(dir, 'vant.config.mjs'))) {
     return dir;
   }
 

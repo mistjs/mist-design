@@ -1,1 +1,1 @@
-export { zhCN } from "./zh-CN";
+export { zhCN } from './zh-CN';

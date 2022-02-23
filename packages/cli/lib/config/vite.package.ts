@@ -1,6 +1,6 @@
-import { join } from "path";
-import { CWD, DIST_DIR, ES_DIR, getMistBuildName } from "../common/constant";
-import type { InlineConfig, LibraryFormats } from "vite";
+import { join } from 'path';
+import { CWD, DIST_DIR, ES_DIR, getMistBuildName } from '../common/constant';
+import type { InlineConfig, LibraryFormats } from 'vite';
 
 export function getViteConfigForPackage({
   minify,
@@ -14,7 +14,7 @@ export function getViteConfigForPackage({
   const name = getMistBuildName();
   return {
     root: CWD,
-    logLevel: "silent",
+    logLevel: 'silent',
     css: {
       preprocessorOptions: {
         less: {
@@ -25,23 +25,23 @@ export function getViteConfigForPackage({
     build: {
       lib: {
         name,
-        entry: join(ES_DIR, "index.js"),
+        entry: join(ES_DIR, 'index.js'),
         formats,
         fileName: (format: string) => {
-          const suffix = format === "umd" ? "" : `.${format}`;
+          const suffix = format === 'umd' ? '' : `.${format}`;
           return minify ? `${name}${suffix}.min.js` : `${name}${suffix}.js`;
         },
       },
       // terser has better compression than esbuild
-      minify: minify ? "terser" : false,
+      minify: minify ? 'terser' : false,
       rollupOptions: {
         external,
         output: {
           assetFileNames: `${name}.css`,
           dir: DIST_DIR,
-          exports: "named",
+          exports: 'named',
           globals: {
-            vue: "Vue",
+            vue: 'Vue',
           },
         },
       },

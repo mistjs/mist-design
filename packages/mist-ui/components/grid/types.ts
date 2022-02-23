@@ -1,8 +1,8 @@
-import { ExtractPropTypes, PropType } from "vue";
-import { Breakpoint } from "../_utils/tools/responsiveObserve";
+import { ExtractPropTypes, PropType } from 'vue';
+import { Breakpoint } from '../_utils/tools/responsiveObserve';
 export type ColSpanType = number | string;
 
-export type FlexType = number | "none" | "auto" | string;
+export type FlexType = number | 'none' | 'auto' | string;
 
 export interface ColSize {
   flex?: FlexType;
@@ -65,15 +65,10 @@ export const colProps = {
 
 export type ColProps = ExtractPropTypes<typeof colProps>;
 
-export type AlignType = "top" | "middle" | "bottom" | "stretch";
+export type AlignType = 'top' | 'middle' | 'bottom' | 'stretch';
 export type Gutter = number | Partial<Record<Breakpoint, number>>;
 
-export type JustifyType =
-  | "start"
-  | "end"
-  | "center"
-  | "space-around"
-  | "space-between";
+export type JustifyType = 'start' | 'end' | 'center' | 'space-around' | 'space-between';
 export const rowProps = {
   align: {
     type: String as PropType<AlignType>,

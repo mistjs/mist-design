@@ -1,24 +1,24 @@
-import { computed, defineComponent } from "vue";
-import { buttonGroupProps } from "./types";
-import { useConfigInject } from "../config-provider";
-import UnreachableException from "../_utils/tools/unreachableException";
+import { computed, defineComponent } from 'vue';
+import { buttonGroupProps } from './types';
+import { useConfigInject } from '../config-provider';
+import UnreachableException from '../_utils/tools/unreachableException';
 export default defineComponent({
-  name: "MButtonGroup",
+  name: 'MButtonGroup',
   props: buttonGroupProps,
   setup(props, { slots }) {
     const classes = computed(() => {
       const { prefixCls, direction } = useConfigInject();
       const { size, className } = props;
-      const pre = prefixCls + "-btn-group";
-      let sizeCls = "";
+      const pre = prefixCls + '-btn-group';
+      let sizeCls = '';
       switch (size) {
-        case "larger":
-          sizeCls = "lg";
+        case 'larger':
+          sizeCls = 'lg';
           break;
-        case "small":
-          sizeCls = "sm";
+        case 'small':
+          sizeCls = 'sm';
           break;
-        case "middle":
+        case 'middle':
         case undefined:
           break;
         default:
@@ -28,7 +28,7 @@ export default defineComponent({
         {
           [`${pre}`]: true,
           [`${pre}-${sizeCls}`]: sizeCls,
-          [`${pre}-rtl`]: direction === "rtl",
+          [`${pre}-rtl`]: direction === 'rtl',
         },
         className,
       ];

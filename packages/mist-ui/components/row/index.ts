@@ -1,5 +1,5 @@
-import { Row } from "../grid";
-import { App, Plugin } from "vue";
+import { Row } from '../grid';
+import { App, Plugin } from 'vue';
 
 Row.install = (app: App) => {
   app.component(Row.name, Row);

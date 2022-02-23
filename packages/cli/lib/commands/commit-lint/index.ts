@@ -1,6 +1,6 @@
-import { readFileSync } from "fs";
-import { consola } from "../../common/logger";
-import { isMonorepo, isMonorepoProject } from "../../common";
+import { readFileSync } from 'fs';
+import { consola } from '../../common/logger';
+import { isMonorepo, isMonorepoProject } from '../../common';
 
 const commitRE =
   /^(revert: )?(fix|feat|docs|perf|test|types|style|build|chore|release|refactor|breaking change)(\(.+\))?: .{1,50}/;
@@ -21,7 +21,7 @@ const baseExample = `
 `;
 export async function commitLint(gitParams: string) {
   await isMonorepoProject();
-  const commitMsg = readFileSync(gitParams, "utf-8").trim();
+  const commitMsg = readFileSync(gitParams, 'utf-8').trim();
 
   if (!commitRE.test(commitMsg) && !mergeRE.test(commitMsg)) {
     const example = isMonorepo() ? monorepoExample : baseExample;

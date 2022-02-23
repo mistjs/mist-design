@@ -1,31 +1,26 @@
-import execa from "execa";
-import { join } from "path";
-import { FilterMonorepoPackage } from "../../typing";
-import { isMonorepo } from "../../common";
-import { CWD } from "../../common/constant";
+import execa from 'execa';
+import { join } from 'path';
+import { FilterMonorepoPackage } from '../../typing';
+import { isMonorepo } from '../../common';
+import { CWD } from '../../common/constant';
 
 export function formatType(type: string) {
   const MAP: Record<string, string> = {
-    fix: "Bug Fixes",
-    feat: "Feature",
-    docs: "Document",
-    types: "Types",
+    fix: 'Bug Fixes',
+    feat: 'Feature',
+    docs: 'Document',
+    types: 'Types',
   };
 
   return MAP[type] || type;
 }
 
-export const getPackagesInfo = (
-  filter?: string
-): FilterMonorepoPackage[] | false => {
+export const getPackagesInfo = (filter?: string): FilterMonorepoPackage[] | false => {
   let data;
   if (filter) {
-    data = execa.sync("node", [
-      join(__dirname, "./execPackages.js"),
-      "--name=" + filter,
-    ]);
+    data = execa.sync('node', [join(__dirname, './execPackages.js'), '--name=' + filter]);
   } else {
-    data = execa.sync("node", [join(__dirname, "./execPackages.js")]);
+    data = execa.sync('node', [join(__dirname, './execPackages.js')]);
   }
   try {
     return JSON.parse(data.stdout);
@@ -36,7 +31,7 @@ export const getPackagesInfo = (
 
 // 格式化代码
 export function transform(item: any) {
-  if (item.type === "chore" || item.type === "test") {
+  if (item.type === 'chore' || item.type === 'test') {
     return null;
   }
   item.type = formatType(item.type);
@@ -61,7 +56,7 @@ export function transform(item: any) {
   if (item.references.length) {
     item.references.forEach((ref: any) => {
       if (ref.issue && item.subject) {
-        item.subject = item.subject.replace(` (#${ref.issue})`, "");
+        item.subject = item.subject.replace(` (#${ref.issue})`, '');
       }
     });
   }

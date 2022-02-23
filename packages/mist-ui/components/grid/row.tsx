@@ -8,19 +8,19 @@ import {
   shallowRef,
   toRef,
   toRefs,
-} from "vue";
-import { Gutter, rowProps } from "./types";
-import { useConfigInject } from "../config-provider";
+} from 'vue';
+import { Gutter, rowProps } from './types';
+import { useConfigInject } from '../config-provider';
 import ResponsiveObserve, {
   Breakpoint,
   responsiveArray,
   ScreenMap,
-} from "../_utils/tools/responsiveObserve";
-import { detectFlexGapSupported } from "../_utils/tools/styleCheck";
-import useProvideRow from "./rowContext";
-import { omit } from "lodash";
+} from '../_utils/tools/responsiveObserve';
+import { detectFlexGapSupported } from '../_utils/tools/styleCheck';
+import useProvideRow from './rowContext';
+import { omit } from 'lodash';
 export default defineComponent({
-  name: "MRow",
+  name: 'MRow',
   props: rowProps,
   setup(props, { slots, attrs }) {
     const { direction, prefixCls } = toRefs(useConfigInject());
@@ -35,14 +35,12 @@ export default defineComponent({
       xxl: true,
     });
     onMounted(() => {
-      token.value = ResponsiveObserve.subscribe((screen) => {
+      token.value = ResponsiveObserve.subscribe(screen => {
         const currentGutter = gutterRef.value || 0;
         if (
-          (!Array.isArray(currentGutter) &&
-            typeof currentGutter === "object") ||
-          (Array.isArray(currentGutter) &&
-            typeof currentGutter[0] === "object") ||
-          typeof currentGutter[1] === "object"
+          (!Array.isArray(currentGutter) && typeof currentGutter === 'object') ||
+          (Array.isArray(currentGutter) && typeof currentGutter[0] === 'object') ||
+          typeof currentGutter[1] === 'object'
         ) {
           Object.assign(screens, screen);
         }
@@ -55,11 +53,9 @@ export default defineComponent({
 
     const getGutter = (): [number, number] => {
       const results: [number, number] = [0, 0];
-      const normalizedGutter = Array.isArray(props.gutter)
-        ? props.gutter
-        : [props.gutter, 0];
+      const normalizedGutter = Array.isArray(props.gutter) ? props.gutter : [props.gutter, 0];
       normalizedGutter.forEach((g, index) => {
-        if (typeof g === "object") {
+        if (typeof g === 'object') {
           for (let i = 0; i < responsiveArray.length; i++) {
             const breakpoint: Breakpoint = responsiveArray[i];
             if (screens[breakpoint] && g[breakpoint] !== undefined) {
@@ -76,14 +72,14 @@ export default defineComponent({
 
     const supportFlexGap = computed(() => detectFlexGapSupported());
     const classes = computed<CSSProperties>(() => {
-      const pre = prefixCls.value + "-row";
+      const pre = prefixCls.value + '-row';
       const { wrap, justify, align } = props;
       return {
         [`${pre}`]: true,
         [`${pre}-no-wrap`]: wrap === false,
         [`${pre}-${justify}`]: justify,
         [`${pre}-${align}`]: align,
-        [`${pre}-rtl`]: direction.value === "rtl",
+        [`${pre}-rtl`]: direction.value === 'rtl',
       };
     });
 
@@ -93,29 +89,23 @@ export default defineComponent({
       const verticalGutter = gutters[1] > 0 ? gutters[1] / -2 : undefined;
       const rowStyle: CSSProperties = {};
       if (horizontalGutter) {
-        rowStyle.marginLeft = horizontalGutter
-          ? `${horizontalGutter}px`
-          : undefined;
-        rowStyle.marginRight = horizontalGutter
-          ? `${horizontalGutter}px`
-          : undefined;
+        rowStyle.marginLeft = horizontalGutter ? `${horizontalGutter}px` : undefined;
+        rowStyle.marginRight = horizontalGutter ? `${horizontalGutter}px` : undefined;
       }
       if (supportFlexGap.value) {
-        rowStyle.rowGap = gutters[1] + "px";
+        rowStyle.rowGap = gutters[1] + 'px';
       } else {
         rowStyle.marginTop = verticalGutter ? `${verticalGutter}px` : undefined;
-        rowStyle.marginBottom = verticalGutter
-          ? `${verticalGutter}px`
-          : undefined;
+        rowStyle.marginBottom = verticalGutter ? `${verticalGutter}px` : undefined;
       }
       return rowStyle;
     });
     useProvideRow({
       gutter: computed(() => getGutter()),
-      wrap: toRef(props, "wrap"),
+      wrap: toRef(props, 'wrap'),
       supportFlexGap,
     });
-    const attrs1 = omit(attrs, ["class"]);
+    const attrs1 = omit(attrs, ['class']);
 
     return () => {
       return (

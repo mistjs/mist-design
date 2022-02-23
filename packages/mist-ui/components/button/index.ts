@@ -1,6 +1,6 @@
-import Button from "./button";
-import ButtonGroup from "./button-group";
-import { App, Plugin } from "vue";
+import Button from './button';
+import ButtonGroup from './button-group';
+import { App, Plugin } from 'vue';
 
 Button.install = (app: App) => {
   app.component(Button.name, Button);

@@ -1,4 +1,4 @@
-import canUseDom from "./canUseDom";
+import canUseDom from './canUseDom';
 
 const isStyleNameSupport = function isStyleNameSupport(styleName) {
   if (canUseDom() && window.document.documentElement) {
@@ -17,7 +17,7 @@ const isStyleValueSupport = function isStyleValueSupport(styleName, value) {
     return false;
   }
 
-  const ele = document.createElement("div");
+  const ele = document.createElement('div');
   const origin = ele.style[styleName];
   ele.style[styleName] = value;
   return ele.style[styleName] !== origin;

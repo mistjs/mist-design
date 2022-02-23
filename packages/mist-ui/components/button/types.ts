@@ -1,33 +1,21 @@
-import type {
-  CSSProperties,
-  DefineComponent,
-  ExtractPropTypes,
-  PropType,
-  VNode,
-} from "vue";
+import type { CSSProperties, DefineComponent, ExtractPropTypes, PropType, VNode } from 'vue';
 
-export type ButtonSize = "small" | "middle" | "larger";
+export type ButtonSize = 'small' | 'middle' | 'larger';
 
-export type ButtonShape = "default" | "circle" | "round";
+export type ButtonShape = 'default' | 'circle' | 'round';
 
-export type ButtonHTMLType = "submit" | "button" | "reset";
+export type ButtonHTMLType = 'submit' | 'button' | 'reset';
 
 export type ButtonLoading = number | boolean;
 
 export type ButtonIconType = VNode | DefineComponent;
 
-export type ButtonType =
-  | "primary"
-  | "ghost"
-  | "dashed"
-  | "link"
-  | "text"
-  | "default";
+export type ButtonType = 'primary' | 'ghost' | 'dashed' | 'link' | 'text' | 'default';
 
 export const buttonProps = {
   size: {
     type: String as PropType<ButtonSize>,
-    default: "middle",
+    default: 'middle',
   },
   // 将按钮宽度调整为父宽度的选项
   block: {
@@ -53,7 +41,7 @@ export const buttonProps = {
   // 原生html标签中的button
   htmlType: {
     type: String as PropType<ButtonHTMLType>,
-    default: "button",
+    default: 'button',
   },
   icon: {
     type: [Object, Function] as PropType<VNode>,
@@ -65,7 +53,7 @@ export const buttonProps = {
   },
   shape: {
     type: String as PropType<ButtonShape>,
-    default: "default",
+    default: 'default',
   },
   target: {
     type: String,
@@ -73,7 +61,7 @@ export const buttonProps = {
   },
   type: {
     type: String as PropType<ButtonType>,
-    default: "default",
+    default: 'default',
   },
 };
 export type ButtonProps = ExtractPropTypes<typeof buttonProps>;
@@ -81,7 +69,7 @@ export type ButtonProps = ExtractPropTypes<typeof buttonProps>;
 export const buttonGroupProps = {
   size: {
     type: String as PropType<ButtonSize>,
-    default: "middle",
+    default: 'middle',
   },
   style: {
     type: Object as PropType<CSSProperties>,
