@@ -1,9 +1,10 @@
-import { computed, defineComponent, PropType, ref, shallowRef, VNode } from 'vue';
+import { computed, defineComponent, PropType, shallowRef, VNode } from 'vue';
 import { DirectionType, SizeType } from '../config-provider';
 import CloseCircleFilled from '@mist-desgin/icons/CloseCircleFilled';
 import { cloneElement } from '../_utils/tools/vnode';
-import { getInputClassName } from './utils';
 import { mergeVNode } from '../_utils/tools';
+import { getInputClassName } from './utils';
+import classNames from '../_utils/tools/classnames';
 const clearableLabeledProps = {
   prefixCls: {
     type: String,
@@ -69,6 +70,10 @@ const clearableLabeledProps = {
     type: String as PropType<'text' | 'input'>,
     default: undefined,
   },
+  lazy: {
+    type: Boolean,
+    default: undefined,
+  },
   element: {
     type: [Function, Object] as PropType<VNode>,
     default: undefined,
@@ -83,13 +88,11 @@ function hasAddon(propsAndSlots: any) {
   return !!(propsAndSlots.addonBefore || propsAndSlots.addonAfter);
 }
 export default defineComponent({
-  name: 'HClearableLabeledInput',
+  name: 'MClearableLabeledInput',
   props: clearableLabeledProps,
   setup(props, { slots, attrs }) {
-    const containerRef = ref<HTMLSpanElement>();
-
     const renderClearIcon = () => {
-      const { allowClear, value, disabled, readOnly, suffix, prefixCls, handleReset } = props;
+      const { allowClear, value, disabled, readOnly, prefixCls, handleReset } = props;
       if (!allowClear) {
         return null;
       }
@@ -148,6 +151,7 @@ export default defineComponent({
       if (hasPrefixSuffix({ prefix, suffix, allowClear })) {
         return cloneElement(element, { value });
       }
+
       const prefixNode = prefix ? <span class={`${prefixCls}-prefix`}>{prefix}</span> : null;
       const affixWrapperCls = {
         [`${prefixCls}-prefix-wrapper`]: true,
@@ -161,14 +165,15 @@ export default defineComponent({
         [`${prefixCls}-affix-wrapper-borderless`]: !bordered,
         [`${attrs.class}`]: !hasAddon(props) && attrs.class,
       };
-
       return (
         <span class={affixWrapperCls}>
           {prefixNode}
           {cloneElement(element, {
             style: null,
             value,
-            class: getInputClassName(shallowRef(prefixCls), bordered, size, disabled),
+            class: classNames(
+              getInputClassName(shallowRef(prefixCls), bordered, size, disabled, direction),
+            ),
           })}
           {suffixNode}
         </span>

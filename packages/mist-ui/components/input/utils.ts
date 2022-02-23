@@ -8,7 +8,7 @@ export function getInputClassName(
   disabled?: boolean,
   direction?: DirectionType,
 ) {
-  const pre = prefixCls.value + '-input';
+  const pre = prefixCls.value.endsWith('input') ? prefixCls.value : prefixCls.value + '-input';
   return {
     [`${pre}`]: true,
     [`${pre}-sm`]: size === 'small',

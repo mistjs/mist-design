@@ -51,7 +51,7 @@ export const inputProps = {
     type: String,
     default: undefined,
   },
-  type: {
+  inputType: {
     type: String as PropType<InputType>,
     default: 'text',
   },
@@ -107,6 +107,14 @@ export const inputProps = {
     type: Boolean,
     default: undefined,
   },
+  autofocus: {
+    type: Boolean,
+    default: false,
+  },
+  lazy: {
+    type: Boolean,
+    default: false,
+  },
   onPressEnter: {
     type: Function,
     default: undefined,
@@ -135,6 +143,7 @@ export const inputProps = {
     type: Function,
     default: undefined,
   },
+  valueModifiers: Object,
 };
 
 export type InputProps = Partial<ExtractPropTypes<typeof inputProps>>;

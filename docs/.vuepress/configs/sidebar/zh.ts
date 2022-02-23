@@ -8,5 +8,6 @@ export const zh: SidebarConfig = {
     '/components/divider/',
     '/components/grid/',
     '/components/space/',
+    '/components/input/',
   ],
 };

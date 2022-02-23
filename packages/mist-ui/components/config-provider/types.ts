@@ -71,11 +71,19 @@ export const configProviderProps = {
     type: Boolean,
     default: true,
   },
+  size: {
+    type: String as PropType<SizeType>,
+    default: undefined,
+  },
+  input: {
+    type: Object as PropType<{ autocomplete: string }>,
+    default: undefined,
+  },
 };
 
-export type ConfigProviderProps = ExtractPropTypes<typeof configProviderProps>;
+export type ConfigProviderProps = Partial<ExtractPropTypes<typeof configProviderProps>>;
 
-const defaultConfigInject = reactive<Partial<ConfigProviderProps>>({
+const defaultConfigInject = reactive<ConfigProviderProps>({
   prefixCls: 'mist',
   locale: 'zh-CN',
   theme: {
@@ -89,6 +97,6 @@ export const useConfigProvider = (provider: ConfigProviderProps) => {
   provide<ConfigProviderProps>(MIST_CONFIG_PROVIDER_SYMBOL, provider);
 };
 
-export const useConfigInject = (): Partial<ConfigProviderProps> => {
-  return inject<Partial<ConfigProviderProps>>(MIST_CONFIG_PROVIDER_SYMBOL, defaultConfigInject);
+export const useConfigInject = (): ConfigProviderProps => {
+  return inject<ConfigProviderProps>(MIST_CONFIG_PROVIDER_SYMBOL, defaultConfigInject);
 };
