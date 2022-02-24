@@ -111,7 +111,7 @@ export default defineComponent({
     const inputRef = ref();
     const clearableInputRef = ref();
     let removePasswordTimeout: any;
-    const { direction, prefixCls, input } = toRefs(useConfigInject());
+    const { direction, prefixCls } = toRefs(useConfigInject());
     const focused = ref(false);
     const stateValue = ref(props.value === undefined ? props.defaultValue : props.value);
 

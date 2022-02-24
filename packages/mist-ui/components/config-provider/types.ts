@@ -91,6 +91,9 @@ const defaultConfigInject = reactive<ConfigProviderProps>({
   },
   direction: 'ltr',
   autoInsertSpaceInButton: true,
+  input: {
+    autocomplete: undefined,
+  },
 });
 
 export const useConfigProvider = (provider: ConfigProviderProps) => {

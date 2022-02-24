@@ -1,4 +1,4 @@
-import { Fragment } from 'vue';
+import { Fragment, Slot, VNode } from 'vue';
 
 export function isEmptyElement(c: any) {
   return (
@@ -22,3 +22,5 @@ export function filterEmpty(children = []) {
   });
   return res.filter(c => !isEmptyElement(c));
 }
+
+export type PropsVNode = VNode | Slot;

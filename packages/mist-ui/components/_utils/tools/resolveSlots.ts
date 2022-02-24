@@ -1,4 +1,4 @@
-import { Fragment, isVNode, VNode, Slots } from 'vue';
+import { Fragment, isVNode, VNode, Slots, Slot } from 'vue';
 
 export const getScopedSlots = (element: any) => {
   return (element.data && element.data.scopedSlots) || {};
@@ -42,9 +42,13 @@ export const isEmptyElement = (c?: VNode) => {
   );
 };
 
-export const mergeVNode = (props: any, slots: Slots, keys: string[]): Record<string, VNode> => {
+export const mergeVNode = <T extends string>(
+  props: any,
+  slots: Slots,
+  keys: T[],
+): Record<T, VNode[] | VNode | undefined> => {
   // 读取props中的keys
-  const vnodes = {};
+  const vnodes = {} as Record<T, VNode[] | VNode | undefined>;
   keys.forEach(key => {
     const prop = props[key];
     const slot = slots[key];

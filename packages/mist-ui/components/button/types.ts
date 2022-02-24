@@ -1,4 +1,5 @@
 import type { CSSProperties, DefineComponent, ExtractPropTypes, PropType, VNode } from 'vue';
+import { PropsVNode } from '../_utils/tools/props-util';
 
 export type ButtonSize = 'small' | 'middle' | 'larger';
 
@@ -44,7 +45,7 @@ export const buttonProps = {
     default: 'button',
   },
   icon: {
-    type: [Object, Function] as PropType<VNode>,
+    type: [Object, Function] as PropType<PropsVNode>,
     default: undefined,
   },
   loading: {
