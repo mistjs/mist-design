@@ -6,4 +6,4 @@ export { default as Col } from './col';
 export { default as Row } from './row';
 export { default as Grid } from './grid';
 export { default as Space } from './space';
-export { default as Input } from './input1';
+export { default as Input } from './input';

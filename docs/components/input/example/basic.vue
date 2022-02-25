@@ -5,7 +5,8 @@
     @change="onChange"
     @input="onChange"
     v-model:value="value"
-  ></m-input>
+    allow-clear
+  />
 </template>
 
 <script lang="ts" setup>

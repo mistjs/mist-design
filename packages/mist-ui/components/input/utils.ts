@@ -1,5 +1,7 @@
 import type { Ref } from 'vue';
 import type { DirectionType, SizeType } from '../config-provider';
+import { InputProps } from '../input';
+import { ClearableLabeledInputProps } from './clearableLabeledInput';
 
 export function getInputClassName(
   prefixCls: Ref<string>,
@@ -19,6 +21,6 @@ export function getInputClassName(
   };
 }
 
-export function hasPrefixSuffix() {
-  return false;
+export function hasPrefixSuffix(props: InputProps | ClearableLabeledInputProps) {
+  return !!(props.prefix || props.suffix || props.allowClear);
 }

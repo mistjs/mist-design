@@ -110,7 +110,7 @@ export const inputEmits = {
   keydown: (e: KeyboardEvent) => e,
   pressEnter: (e: KeyboardEvent) => e,
   clear: () => true,
-  'update:value': (value: string) => value,
+  'update:value': (value?: string) => value || true,
 };
 
 export type InputEmits = typeof inputEmits;

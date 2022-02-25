@@ -94,6 +94,7 @@ const defaultConfigInject = reactive<ConfigProviderProps>({
   input: {
     autocomplete: undefined,
   },
+  size: undefined,
 });
 
 export const useConfigProvider = (provider: ConfigProviderProps) => {
