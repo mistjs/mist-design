@@ -28,7 +28,7 @@ const basicProps = {
     default: undefined,
   },
   element: {
-    type: Object as PropType<VNode>,
+    type: [Object, Function] as PropType<PropsVNode>,
     required: true,
   },
   handleReset: {
@@ -248,10 +248,11 @@ export default defineComponent({
 
     return () => {
       const { prefixCls, inputType, element } = props;
+      const myElement: VNode = (typeof element === 'function' ? element() : element) as VNode;
       if (inputType === 'text') {
-        return renderTextAreaWithClearIcon(prefixCls, element);
+        return renderTextAreaWithClearIcon(prefixCls, myElement);
       }
-      return renderInputWithLabel(prefixCls, renderLabeledIcon(prefixCls, element));
+      return renderInputWithLabel(prefixCls, renderLabeledIcon(prefixCls, myElement));
     };
   },
 });

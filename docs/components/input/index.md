@@ -12,4 +12,13 @@
 <demo title="基础" id="components-input-demo-basic" src="./example/basic.vue" desc="从堆叠到水平排列。<br/>使用单一的一组`Row`和 `Col`栅格组件，就可以创建一个基本的栅格系统，所有列`（Col）`必须放在`Row`内。"></demo>
 
 
+<demo title="密码框" id="components-input-demo-password" src="./example/password.vue" desc="从堆叠到水平排列。<br/>使用单一的一组`Row`和 `Col`栅格组件，就可以创建一个基本的栅格系统，所有列`（Col）`必须放在`Row`内。"></demo>
+
+
+<demo title="搜索框" id="components-input-demo-search" src="./example/search.vue" desc="从堆叠到水平排列。<br/>使用单一的一组`Row`和 `Col`栅格组件，就可以创建一个基本的栅格系统，所有列`（Col）`必须放在`Row`内。"></demo>
+
+
+<demo title="多行文本框" id="components-input-demo-textarea" src="./example/textarea.vue" desc="从堆叠到水平排列。<br/>使用单一的一组`Row`和 `Col`栅格组件，就可以创建一个基本的栅格系统，所有列`（Col）`必须放在`Row`内。"></demo>
+
+
 

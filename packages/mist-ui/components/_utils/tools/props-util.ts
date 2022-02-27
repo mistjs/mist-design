@@ -23,4 +23,4 @@ export function filterEmpty(children = []) {
   return res.filter(c => !isEmptyElement(c));
 }
 
-export type PropsVNode = VNode | Slot;
+export type PropsVNode = VNode | Slot | VNode[];
