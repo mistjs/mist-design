@@ -9,5 +9,6 @@ export const zh: SidebarConfig = {
     '/components/grid/',
     '/components/space/',
     '/components/input/',
+    '/components/input-number/',
   ],
 };

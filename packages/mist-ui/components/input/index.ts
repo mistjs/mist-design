@@ -4,13 +4,18 @@ import Password from './password';
 import Search from './search';
 import Textarea from './textarea';
 import Group from './group';
-export * from './InputProps';
+export * from './inputProps';
 
 Input.Password = Password;
 Input.Search = Search;
 Input.TextArea = Textarea;
 Input.Group = Group;
-export { Password as InputPassword };
+export {
+  Password as InputPassword,
+  Search as InputSearch,
+  Textarea as InputTextArea,
+  Group as InputGroup,
+};
 Input.install = (app: App) => {
   app.component(Input.name, Input);
   app.component(Password.name, Password);

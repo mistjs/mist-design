@@ -6,4 +6,5 @@ export { default as Col } from './col';
 export { default as Row } from './row';
 export { default as Grid } from './grid';
 export { default as Space } from './space';
-export { default as Input, InputPassword } from './input';
+export { default as Input, InputPassword, InputGroup, InputSearch, InputTextArea } from './input';
+export { default as InputNumber } from './input-number';
