@@ -24,7 +24,7 @@ export function resolveOnChange<E extends HTMLInputElement | HTMLTextAreaElement
     const currentTarget = target.cloneNode(true) as E;
     event = Object.assign(
       {
-        target: { value: currentTarget },
+        target: { value: currentTarget.value },
         currentTarget: { value: currentTarget },
       },
       e,
@@ -36,7 +36,7 @@ export function resolveOnChange<E extends HTMLInputElement | HTMLTextAreaElement
   if (targetValue !== undefined) {
     event = Object.assign(
       {
-        target: { value: target },
+        target: { value: target.value },
         currentTarget: { value: target },
       },
       e,
@@ -85,13 +85,14 @@ export default defineComponent({
   name: 'MInput',
   props: inputProps,
   emits: inputEmits,
-  setup(props, { emit, attrs, slots }) {
+  setup(props, { emit, attrs, slots, expose }) {
     const { direction, prefixCls, input: inputConfig, size } = toRefs(useConfigInject());
     const pre = computed(() => prefixCls.value + '-input');
     const stateValue = shallowRef(props.value === undefined ? props.defaultValue : props.value);
     const removePassWordTimeout = shallowRef(null);
     const inputRef = ref<HTMLInputElement>();
     const focused = shallowRef(false);
+    const clearableInput = ref<HTMLSpanElement>();
 
     watch(
       () => props.value,
@@ -140,6 +141,14 @@ export default defineComponent({
     const focus = (option?: InputFocusOptions) => {
       triggerFocus(inputRef.value, option);
     };
+    // blur方法
+    const blur = () => {
+      inputRef.value.blur();
+    };
+
+    const select = () => {
+      inputRef.value.select();
+    };
 
     // blur
     const handleBlur = (e: FocusEvent) => {
@@ -152,6 +161,7 @@ export default defineComponent({
       stateValue.value = '';
       focus();
       resolveOnChange(inputRef.value, e, e => {
+        console.log(e);
         emit('change', e);
       });
     };
@@ -244,6 +254,13 @@ export default defineComponent({
         clearTimeout(removePassWordTimeout.value);
       }
     });
+    const setSelectionRange = (
+      start: number,
+      end: number,
+      direction?: 'forward' | 'backward' | 'none',
+    ) => {
+      inputRef.value?.setSelectionRange(start, end, direction);
+    };
 
     const renderComponent = () => {
       // 初始化组件
@@ -264,9 +281,20 @@ export default defineComponent({
           bordered={bordered}
           suffix={showCountSuffix}
           prefixCls={pre.value}
+          ref={clearableInput}
         />
       );
     };
+
+    expose({
+      blur,
+      focus,
+      select,
+      setSelectionRange,
+      input: inputRef,
+      stateValue,
+    });
+
     return () => {
       return renderComponent();
     };

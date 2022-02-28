@@ -16,6 +16,7 @@ let styleForPesudo: any;
 export default defineComponent({
   name: 'ProWave',
   props: ['insertExtraNode'],
+  inheritAttrs: false,
   setup(_props, { slots }) {
     const insertExtraNode = computed(() => _props.insertExtraNode);
     let vm: ComponentInternalInstance | null;

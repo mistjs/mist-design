@@ -1,6 +1,7 @@
 <template>
   <m-input
-    defaultValue="搜索的撒多"
+    defaultValue="搜索的撒多1111"
+    placeholder="请输入内容"
     @blur="onBlur"
     @change="onChange"
     @input="onChange"

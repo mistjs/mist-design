@@ -2,6 +2,7 @@ import { ExtractPropTypes, PropType, Slot, VNode } from 'vue';
 import { SizeType } from '../config-provider';
 import { LiteralUnion } from '../_utils/type';
 import { PropsVNode } from '../_utils/tools/props-util';
+import { omit } from 'lodash';
 
 export interface ShowCountType {
   formatter: (args: { count: number; maxLength?: number }) => VNode;
@@ -98,6 +99,14 @@ export const inputProps = {
     type: Function as PropType<(e) => void>,
     default: undefined,
   },
+  placeholder: {
+    type: String as PropType<string>,
+    default: undefined,
+  },
+  lazy: {
+    type: Boolean as PropType<boolean>,
+    default: undefined,
+  },
 };
 
 export type InputProps = ExtractPropTypes<typeof inputProps>;
@@ -114,3 +123,42 @@ export const inputEmits = {
 };
 
 export type InputEmits = typeof inputEmits;
+
+export interface AutoSizeType {
+  minRows?: number;
+  maxRows?: number;
+}
+export interface ShowCountProps {
+  formatter: (args: { count: number; maxlength?: number }) => string;
+}
+
+export const textareaProps = {
+  ...omit(inputProps, ['prefix', 'addonBefore', 'addonAfter', 'suffix']),
+  prefixCls: {
+    type: String as PropType<string>,
+    default: undefined,
+  },
+  autoSize: {
+    type: [Boolean, Object] as PropType<AutoSizeType>,
+    default: undefined,
+  },
+  showCount: {
+    type: [Boolean, Object] as PropType<boolean | ShowCountProps>,
+    default: undefined,
+  },
+  onResize: {
+    type: Function as PropType<(size: { width: number; height: number }) => void>,
+    default: undefined,
+  },
+  onCompositionstart: {
+    type: Function,
+    default: undefined,
+  },
+  onCompositionend: {
+    type: Function,
+    default: undefined,
+  },
+  valueModifiers: Object,
+};
+
+export type TextAreaProps = Partial<ExtractPropTypes<typeof textareaProps>>;
