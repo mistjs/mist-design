@@ -5,3 +5,4 @@ import './row/style';
 import './col/style';
 import './space/style';
 import './input/style';
+import './input-number/style';

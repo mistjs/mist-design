@@ -1,7 +1,7 @@
-import isMobile from '../../vc-util/isMobile';
+import isMobile from '../../_utils/vc-util/isMobile';
 import type { PropType } from 'vue';
 import { onBeforeUnmount, ref, defineComponent } from 'vue';
-import classNames from '../../_util/classNames';
+import classNames from '../../_utils/tools/classNames';
 
 /**
  * When click and hold on a button - the speed of auto changing the value.

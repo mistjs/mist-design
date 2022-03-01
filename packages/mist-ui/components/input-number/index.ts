@@ -1,4 +1,4 @@
-import InputNumber from './inputNumber';
+import InputNumber from './input-number';
 import type { App, Plugin } from 'vue';
 
 InputNumber.install = (app: App) => {

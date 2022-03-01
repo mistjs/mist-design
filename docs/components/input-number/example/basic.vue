@@ -1,11 +1,12 @@
 <template>
-  <div>ceshi</div>
+  <m-input-number step="2" :defaultValue="10" v-model:value="value" />
 </template>
 
-<script>
-export default {
-  name: 'basic',
-};
-</script>
+<script lang="ts" setup>
+import { shallowRef, watch } from 'vue';
 
-<style scoped></style>
+const value = shallowRef();
+watch(value, () => {
+  console.log(value.value);
+});
+</script>

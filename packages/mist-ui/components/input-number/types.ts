@@ -13,10 +13,6 @@ const inputNumberProps = {
     type: [Object, Function] as PropType<PropsVNode>,
     default: undefined,
   },
-  prefix: {
-    type: [Object, Function] as PropType<PropsVNode>,
-    default: undefined,
-  },
   size: {
     type: String as PropType<SizeType>,
     default: undefined,
@@ -27,6 +23,6 @@ const inputNumberProps = {
   },
 };
 
-export type InputNumberProps = Partial<ExtractPropTypes<typeof inputNumberProps>>;
+export type InputNumberProps = ExtractPropTypes<typeof inputNumberProps>;
 
 export default inputNumberProps;

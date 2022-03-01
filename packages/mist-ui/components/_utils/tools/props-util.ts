@@ -1,5 +1,8 @@
 import { Fragment, Slot, VNode } from 'vue';
 
+export function isFragment(c) {
+  return c.length === 1 && c[0].type === Fragment;
+}
 export function isEmptyElement(c: any) {
   return (
     c &&
@@ -24,3 +27,7 @@ export function filterEmpty(children = []) {
 }
 
 export type PropsVNode = VNode | Slot | VNode[];
+
+export function isValidValue(val: any) {
+  return val !== undefined && val !== null;
+}
