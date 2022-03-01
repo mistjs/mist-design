@@ -299,12 +299,14 @@ importers:
       typescript: ~4.5.5
       vitest: ^0.1.23
       vue: ^3.2.29
+      vue-types: ^4.1.1
     dependencies:
       '@mist-desgin/icons': link:../icons
       '@vueuse/core': 7.6.2_vue@3.2.30
       lodash: 4.17.21
       lodash-es: 4.17.21
       vue: 3.2.30
+      vue-types: 4.1.1_vue@3.2.30
     devDependencies:
       '@mistjs/cli': link:../cli
       '@types/node': 16.11.22
@@ -21046,6 +21048,16 @@ packages:
       is-plain-object: 3.0.1
       vue: 3.2.30
     dev: true
+
+  /vue-types/4.1.1_vue@3.2.30:
+    resolution: {integrity: sha512-Jq2GZ/w6rExJbLA/h7nHBFLciu+YNekgox0DB64wN1snZ4IIJMq+qnqp1/vE4fc7vEjZcP5KGhLzkkSjIHLRzw==}
+    engines: {node: '>=12.16.0'}
+    peerDependencies:
+      vue: ^2.0.0 || ^3.0.0
+    dependencies:
+      is-plain-object: 5.0.0
+      vue: 3.2.30
+    dev: false
 
   /vue/3.2.30:
     resolution: {integrity: sha512-ZmTFWVJUX2XADkuOB8GcLTuxnBLogjJBTNVrM7WsTnjqRQ+VR8bLNrvNsbn8vj/LaP5+0WFAPrpngOYE2x+e+Q==}
