@@ -3,7 +3,6 @@ import { computed, defineComponent, inject, ref, toRefs } from 'vue';
 import PropTypes from '../_utils/tools/vue-types';
 import VcCheckbox from '../checkbox/src/Checkbox';
 import classNames from '../_utils/tools/classNames';
-// import useConfigInject from '../_util/hooks/useConfigInject';/**/
 import type { RadioChangeEvent, RadioGroupContext } from './types';
 import { useConfigInject } from '../config-provider';
 // import { useInjectFormItemContext } from '../form/FormItemContext';
@@ -27,7 +26,7 @@ export const radioProps = {
 export type RadioProps = Partial<ExtractPropTypes<typeof radioProps>>;
 
 export default defineComponent({
-  name: 'ARadio',
+  name: 'MRadio',
   props: radioProps,
   emits: ['update:checked', 'update:value', 'change', 'blur', 'focus'],
   setup(props, { emit, expose, slots }) {
@@ -64,16 +63,11 @@ export default defineComponent({
 
     return () => {
       const radioGroup = radioGroupContext;
-      const {
-        prefixCls: customizePrefixCls,
-        // id = formItemContext.id.value,
-        onClick,
-        ...restProps
-      } = props;
+      const { prefixCls: customizePrefixCls, id = '', onClick, ...restProps } = props;
 
       const rProps: RadioProps = {
         prefixCls: prefixCls.value,
-        // id,
+        id,
         ...restProps,
       };
 

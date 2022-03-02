@@ -22,7 +22,7 @@ import { flattenChildren } from '../_utils/tools';
 import { useConfigInject } from '../config-provider';
 
 export default defineComponent({
-  name: 'ACheckbox',
+  name: 'MCheckbox',
   inheritAttrs: false,
   __MIST_CHECKBOX: true,
   props: checkboxProps(),
@@ -70,17 +70,11 @@ export default defineComponent({
     });
     return () => {
       const children = flattenChildren(slots.default?.());
-      const {
-        indeterminate,
-        skipGroup,
-        // id = formItemContext.id.value,
-        onClick,
-        ...restProps
-      } = props;
+      const { indeterminate, skipGroup, id = '', onClick, ...restProps } = props;
       const { onMouseenter, onMouseleave, onInput, class: className, style, ...restAttrs } = attrs;
       const checkboxProps: CheckboxProps = {
         ...restProps,
-        // id,
+        id,
         prefixCls: prefixCls.value,
         ...restAttrs,
       };
