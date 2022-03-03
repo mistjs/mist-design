@@ -10,7 +10,7 @@ import {
 } from 'vue';
 import classNames from '../_utils/tools/classNames';
 import VcCheckbox from './src/Checkbox';
-// import warning from '../_utils/vc-util/warning';
+import warning from '../_utils/tools/warning';
 import type { RadioChangeEvent } from '../radio/types';
 import type { EventHandler } from '../_utils/tools/EventInterface';
 // import { useInjectFormItemContext } from '../form/FormItemContext';
@@ -45,7 +45,7 @@ export default defineComponent({
       }
     });
     onMounted(() => {
-      console.warn(
+      warning(
         props.checked !== undefined || checkboxGroup || props.value === undefined,
         'Checkbox',
         '`value` is not validate prop, do you mean `checked`?',

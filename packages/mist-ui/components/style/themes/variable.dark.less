@@ -1,4 +1,7 @@
-@import "variable";
+@import 'variable';
+
+// An override for the html selector for theme prefixes
+@html-selector-dark: ~'html.dark';
 
 @component-background-dark: #141414;
 @base-dark-primary: mix(@cyan-base, @component-background-dark, 85%);
@@ -6,139 +9,70 @@
 @red-base-dark: mix(@red-base, @component-background-dark, 65%);
 @gold-base-dark: mix(@gold-base, @component-background-dark, 85%);
 
-html.dark {
+@{html-selector-dark} {
   // ========= Primary Color =========
   --@{mist-prefix}-primary-color: @base-dark-primary;
   --@{mist-prefix}-primary-color-hover: color(
-    ~`colorPalette("@{base-dark-primary}", 5) `,
+    ~`colorPalette('@{base-dark-primary}', 5) `,
     @component-background-dark,
     90%
   );
   --@{mist-prefix}-primary-color-active: color(
-    ~`colorPalette("@{base-dark-primary}", 7) `,
+    ~`colorPalette('@{base-dark-primary}', 7) `,
     @component-background-dark,
     25%
   );
-  --@{mist-prefix}-primary-color-outline: fade(
-    @base-dark-primary,
-    @outline-fade
-  );
+  --@{mist-prefix}-primary-color-outline: fade(@base-dark-primary, @outline-fade);
 
   // Legacy
-  @legacy-primary-1: color(~`colorPalette("@{base-dark-primary}", 1) `);
+  @legacy-primary-1: color(~`colorPalette('@{base-dark-primary}', 1) `);
 
   --@{mist-prefix}-primary-1: @legacy-primary-1;
-  --@{mist-prefix}-primary-2: color(
-    ~`colorPalette("@{base-dark-primary}", 2) `
-  );
-  --@{mist-prefix}-primary-3: color(
-    ~`colorPalette("@{base-dark-primary}", 3) `
-  );
-  --@{mist-prefix}-primary-4: color(
-    ~`colorPalette("@{base-dark-primary}", 4) `
-  );
-  --@{mist-prefix}-primary-5: color(
-    ~`colorPalette("@{base-dark-primary}", 5) `
-  );
+  --@{mist-prefix}-primary-2: color(~`colorPalette('@{base-dark-primary}', 2) `);
+  --@{mist-prefix}-primary-3: color(~`colorPalette('@{base-dark-primary}', 3) `);
+  --@{mist-prefix}-primary-4: color(~`colorPalette('@{base-dark-primary}', 4) `);
+  --@{mist-prefix}-primary-5: color(~`colorPalette('@{base-dark-primary}', 5) `);
   --@{mist-prefix}-primary-6: @base-dark-primary;
-  --@{mist-prefix}-primary-7: color(
-    ~`colorPalette("@{base-dark-primary}", 7) `
-  );
+  --@{mist-prefix}-primary-7: color(~`colorPalette('@{base-dark-primary}', 7) `);
 
   // Deprecated
-  --@{mist-prefix}-primary-color-deprecated-pure: ~"";
-  --@{mist-prefix}-primary-color-deprecated-l-35: lighten(
-    @base-dark-primary,
-    35%
-  );
-  --@{mist-prefix}-primary-color-deprecated-l-20: lighten(
-    @base-dark-primary,
-    20%
-  );
+  --@{mist-prefix}-primary-color-deprecated-pure: ~'';
+  --@{mist-prefix}-primary-color-deprecated-l-35: lighten(@base-dark-primary, 35%);
+  --@{mist-prefix}-primary-color-deprecated-l-20: lighten(@base-dark-primary, 20%);
   --@{mist-prefix}-primary-color-deprecated-t-20: tint(@base-dark-primary, 20%);
   --@{mist-prefix}-primary-color-deprecated-t-50: tint(@base-dark-primary, 50%);
   --@{mist-prefix}-primary-color-deprecated-f-12: fade(@base-dark-primary, 12%);
-  --@{mist-prefix}-primary-color-active-deprecated-f-30: fade(
-    @legacy-primary-1,
-    30%
-  );
-  --@{mist-prefix}-primary-color-active-deprecated-d-02: darken(
-    @legacy-primary-1,
-    2%
-  );
+  --@{mist-prefix}-primary-color-active-deprecated-f-30: fade(@legacy-primary-1, 30%);
+  --@{mist-prefix}-primary-color-active-deprecated-d-02: darken(@legacy-primary-1, 2%);
 
   // ========= Success Color =========
   --@{mist-prefix}-success-color: @green-base-dark;
-  --@{mist-prefix}-success-color-hover: color(
-    ~`colorPalette("@{green-base-dark}", 5) `
-  );
-  --@{mist-prefix}-success-color-active: color(
-    ~`colorPalette("@{green-base-dark}", 7) `
-  );
+  --@{mist-prefix}-success-color-hover: color(~`colorPalette('@{green-base-dark}', 5) `);
+  --@{mist-prefix}-success-color-active: color(~`colorPalette('@{green-base-dark}', 7) `);
   --@{mist-prefix}-success-color-outline: fade(@green-base-dark, @outline-fade);
-  --@{mist-prefix}-success-color-deprecated-bg: ~`colorPalette(
-      "@{green-base-dark}",
-      1
-    )
-    `;
-  --@{mist-prefix}-success-color-deprecated-border: ~`colorPalette(
-      "@{green-base-dark}",
-      3
-    )
-    `;
+  --@{mist-prefix}-success-color-deprecated-bg: ~`colorPalette('@{green-base-dark}', 1) `;
+  --@{mist-prefix}-success-color-deprecated-border: ~`colorPalette('@{green-base-dark}', 3) `;
 
   // ========== Error Color ==========
   --@{mist-prefix}-error-color: @red-base-dark;
-  --@{mist-prefix}-error-color-hover: color(
-    ~`colorPalette("@{red-base-dark}", 5) `
-  );
-  --@{mist-prefix}-error-color-active: color(
-    ~`colorPalette("@{red-base-dark}", 7) `
-  );
+  --@{mist-prefix}-error-color-hover: color(~`colorPalette('@{red-base-dark}', 5) `);
+  --@{mist-prefix}-error-color-active: color(~`colorPalette('@{red-base-dark}', 7) `);
   --@{mist-prefix}-error-color-outline: fade(@red-base-dark, @outline-fade);
-  --@{mist-prefix}-error-color-deprecated-bg: ~`colorPalette(
-      "@{red-base-dark}",
-      1
-    )
-    `;
-  --@{mist-prefix}-error-color-deprecated-border: ~`colorPalette(
-      "@{red-base-dark}",
-      3
-    )
-    `;
+  --@{mist-prefix}-error-color-deprecated-bg: ~`colorPalette('@{red-base-dark}', 1) `;
+  --@{mist-prefix}-error-color-deprecated-border: ~`colorPalette('@{red-base-dark}', 3) `;
 
   // ========= Warning Color =========
   --@{mist-prefix}-warning-color: @gold-base-dark;
-  --@{mist-prefix}-warning-color-hover: color(
-    ~`colorPalette("@{gold-base-dark}", 5) `
-  );
-  --@{mist-prefix}-warning-color-active: color(
-    ~`colorPalette("@{gold-base-dark}", 7) `
-  );
+  --@{mist-prefix}-warning-color-hover: color(~`colorPalette('@{gold-base-dark}', 5) `);
+  --@{mist-prefix}-warning-color-active: color(~`colorPalette('@{gold-base-dark}', 7) `);
   --@{mist-prefix}-warning-color-outline: fade(@gold-base-dark, @outline-fade);
-  --@{mist-prefix}-warning-color-deprecated-bg: ~`colorPalette(
-      "@{gold-base-dark}",
-      1
-    )
-    `;
-  --@{mist-prefix}-warning-color-deprecated-border: ~`colorPalette(
-      "@{gold-base-dark}",
-      3
-    )
-    `;
+  --@{mist-prefix}-warning-color-deprecated-bg: ~`colorPalette('@{gold-base-dark}', 1) `;
+  --@{mist-prefix}-warning-color-deprecated-border: ~`colorPalette('@{gold-base-dark}', 3) `;
 
   // ========== Info Color ===========
   --@{mist-prefix}-info-color: @base-dark-primary;
-  --@{mist-prefix}-info-color-deprecated-bg: ~`colorPalette(
-      "@{base-dark-primary}",
-      1
-    )
-    `;
-  --@{mist-prefix}-info-color-deprecated-border: ~`colorPalette(
-      "@{base-dark-primary}",
-      3
-    )
-    `;
+  --@{mist-prefix}-info-color-deprecated-bg: ~`colorPalette('@{base-dark-primary}', 1) `;
+  --@{mist-prefix}-info-color-deprecated-border: ~`colorPalette('@{base-dark-primary}', 3) `;
 
   // ========= Bg Color ==========
   --@{mist-prefix}-component-background: @component-background-dark;
@@ -162,10 +96,7 @@ html.dark {
     @white,
     4%
   ); // background of header and selected item
-  --@{mist-prefix}-background-color-base: fade(
-    @white,
-    8%
-  ); // Default grey background color
+  --@{mist-prefix}-background-color-base: fade(@white, 8%); // Default grey background color
 
   // Disabled states
   --@{mist-prefix}-disabled-color: fade(@white, 30%);
@@ -190,8 +121,8 @@ html.dark {
     0 9px 28px 0 rgba(0, 0, 0, 0.2), 0 12px 48px 16px rgba(0, 0, 0, 0.12);
   --@{mist-prefix}-shadow-1-right: 6px 0 16px -8px rgba(0, 0, 0, 0.32),
     9px 0 28px 0 rgba(0, 0, 0, 0.2), 12px 0 48px 16px rgba(0, 0, 0, 0.12);
-  --@{mist-prefix}-shadow-2: 0 3px 6px -4px rgba(0, 0, 0, 0.48),
-    0 6px 16px 0 rgba(0, 0, 0, 0.32), 0 9px 28px 8px rgba(0, 0, 0, 0.2);
+  --@{mist-prefix}-shadow-2: 0 3px 6px -4px rgba(0, 0, 0, 0.48), 0 6px 16px 0 rgba(0, 0, 0, 0.32),
+    0 9px 28px 8px rgba(0, 0, 0, 0.2);
 
   // Buttons
   // ---
@@ -202,12 +133,12 @@ html.dark {
   --@{mist-prefix}-btn-default-ghost-color: @text-color;
   --@{mist-prefix}-btn-default-ghost-border: fade(@white, 25%);
   --@{mist-prefix}-btn-text-hover-bg: rgba(255, 255, 255, 0.03);
-  --@{mist-prefix}-btn-text-hover-bg-active: fadein(
-    rgba(255, 255, 255, 0.03),
-    1%
-  );
+  --@{mist-prefix}-btn-text-hover-bg-active: fadein(rgba(255, 255, 255, 0.03), 1%);
 
   // Divider
   // ---
   --@{mist-prefix}-divider-color: rgba(255, 255, 255, 12%);
+
+  // Checkbox
+  --@{mist-prefix}-checkbox-check-bg: transparent;
 }
