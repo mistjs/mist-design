@@ -67,6 +67,7 @@ export default defineComponent({
       const mergedAlign = align === undefined && direction === 'horizontal' ? 'center' : align;
       return {
         [`${pre}`]: true,
+        [`${pre}-${direction}`]: !!direction,
         [`${pre}-rtl`]: directionConfig.value === 'rtl',
         [`${pre}-align-${mergedAlign}`]: mergedAlign,
       };

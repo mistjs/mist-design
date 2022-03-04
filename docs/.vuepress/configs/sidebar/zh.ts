@@ -11,5 +11,6 @@ export const zh: SidebarConfig = {
     '/components/input/',
     '/components/input-number/',
     '/components/checkbox/',
+    '/components/radio/',
   ],
 };

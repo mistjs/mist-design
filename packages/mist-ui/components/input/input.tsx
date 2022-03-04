@@ -225,6 +225,7 @@ export default defineComponent({
           value={stateValue.value}
           onKeyDown={handleKeydown}
           onInput={handleInput}
+          {...attrs}
           className={classNames(
             getInputClassName(pre, bordered, customSize || size, disabled, direction.value),
             {

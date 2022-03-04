@@ -5,7 +5,7 @@
 @radio-group-prefix-cls: ~'@{radio-prefix-cls}-group';
 @radio-inner-prefix-cls: ~'@{radio-prefix-cls}-inner';
 @radio-duration: 0.3s;
-@radio-focus-shadow: 0 0 0 3px @primary-1;
+@radio-focus-shadow: ~'var(--@{mist-prefix}-radio-focus-shadow)';
 @radio-button-focus-shadow: @radio-focus-shadow;
 
 .@{radio-group-prefix-cls} {
@@ -57,6 +57,7 @@
   &:hover .@{radio-inner-prefix-cls},
   &-input:focus + .@{radio-inner-prefix-cls} {
     border-color: @radio-dot-color;
+    //border-color: transparent;/
   }
 
   &-input:focus + .@{radio-inner-prefix-cls} {
@@ -132,7 +133,6 @@
 .@{radio-prefix-cls}-checked {
   .@{radio-inner-prefix-cls} {
     border-color: @radio-dot-color;
-
     &::after {
       transform: scale((unit(@radio-dot-size) / unit(@radio-size)));
       opacity: 1;

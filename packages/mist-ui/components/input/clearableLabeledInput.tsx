@@ -170,7 +170,6 @@ export default defineComponent({
         [`${prefixCls}-affix-wrapper-borderless`]: !bordered,
         [`${attrs.class}`]: !hasAddon(props) && attrs.class,
       });
-
       return (
         <span
           ref={containerRef}

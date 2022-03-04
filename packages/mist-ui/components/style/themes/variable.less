@@ -131,6 +131,15 @@
 
   // Checkbox
   --@{mist-prefix}-checkbox-check-bg: #fff;
+
+  // Radio
+  --@{mist-prefix}-radio-solid-checked-color: @component-background;
+  --@{mist-prefix}-radio-dot-disabled-color: fade(@black, 20%);
+  --@{mist-prefix}-radio-focus-shadow: 0 0 0 3px @primary-1;
+
+  // Radio Button
+  --@{mist-prefix}-radio-disabled-button-checked-bg: @disabled-active-bg;
+  --@{mist-prefix}-radio-disabled-button-checked-color: @disabled-color;
 }
 
 // -------- Colors -----------
@@ -413,8 +422,8 @@
 @radio-border-width: 1px;
 @radio-dot-size: @radio-size - 8px;
 @radio-dot-color: @primary-color;
-@radio-dot-disabled-color: fade(@black, 20%);
-@radio-solid-checked-color: @component-background;
+@radio-dot-disabled-color: ~'var(--@{mist-prefix}-radio-dot-disabled-color)';
+@radio-solid-checked-color: ~'var(--@{mist-prefix}-radio-solid-checked-color)';
 
 // Radio buttons
 @radio-button-bg: @btn-default-bg;
@@ -422,8 +431,8 @@
 @radio-button-color: @btn-default-color;
 @radio-button-hover-color: @primary-5;
 @radio-button-active-color: @primary-7;
-@radio-disabled-button-checked-bg: @disabled-active-bg;
-@radio-disabled-button-checked-color: @disabled-color;
+@radio-disabled-button-checked-bg: ~'var(--@{mist-prefix}-radio-disabled-button-checked-bg)';
+@radio-disabled-button-checked-color: ~'var(--@{mist-prefix}-radio-disabled-button-checked-color)';
 @radio-wrapper-margin-right: 8px;
 
 // Media queries breakpoints
