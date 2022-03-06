@@ -2,7 +2,7 @@ import { provide, nextTick, defineComponent, ref, watch, toRefs, computed } from
 import type { PropType, ExtractPropTypes } from 'vue';
 import classNames from '../_utils/tools/classNames';
 import PropTypes from '../_utils/tools/vue-types';
-import Radio from './Radio';
+import Radio from './radio';
 // import useConfigInject from '../_utils/hooks/useConfigInject';
 import { tuple } from '../_utils/type';
 import type { RadioChangeEvent } from './types';
@@ -26,6 +26,7 @@ export type RadioGroupChildOption = {
 const radioGroupProps = {
   prefixCls: PropTypes.string,
   value: PropTypes.any,
+  defaultValue: PropTypes.any,
   size: PropTypes.oneOf(RadioGroupSizeTypes).def('default'),
   options: {
     type: Array as PropType<Array<String | RadioGroupChildOption>>,
@@ -48,7 +49,7 @@ export default defineComponent({
     // const { prefixCls, direction, size } = useConfigInject('radio', props);
     const { prefixCls: preCls, direction, size } = toRefs(useConfigInject());
     const prefixCls = computed(() => preCls.value + '-radio');
-    const stateValue = ref(props.value);
+    const stateValue = ref(props.value ? props.value : props.defaultValue);
     const updatingValue = ref<boolean>(false);
     watch(
       () => props.value,
@@ -95,7 +96,7 @@ export default defineComponent({
       const groupPrefixCls = `${prefixCls.value}-group`;
 
       const classString = classNames(groupPrefixCls, `${groupPrefixCls}-${buttonStyle}`, {
-        [`${groupPrefixCls}-${size.value}`]: size.value,
+        [`${groupPrefixCls}-${props.size || size.value}`]: !!(props.size || size.value),
         [`${groupPrefixCls}-rtl`]: direction.value === 'rtl',
       });
 

@@ -34,8 +34,9 @@ export default defineComponent({
     const vcCheckbox = ref<HTMLElement>();
     const radioGroupContext = inject<RadioGroupContext>('radioGroupContext', undefined);
     const { prefixCls: preCls, direction } = toRefs(useConfigInject());
-    const prefixCls = computed(() => preCls.value + '-radio');
-
+    const prefixCls = computed(() => {
+      return props.prefixCls ? props.prefixCls : preCls.value + '-radio';
+    });
     const focus = () => {
       vcCheckbox.value.focus();
     };
@@ -64,13 +65,11 @@ export default defineComponent({
     return () => {
       const radioGroup = radioGroupContext;
       const { prefixCls: customizePrefixCls, id = '', onClick, ...restProps } = props;
-
       const rProps: RadioProps = {
-        prefixCls: prefixCls.value,
+        prefixCls: customizePrefixCls || prefixCls.value,
         id,
         ...restProps,
       };
-
       if (radioGroup) {
         rProps.name = radioGroup.props.name;
         rProps.onChange = onChange;

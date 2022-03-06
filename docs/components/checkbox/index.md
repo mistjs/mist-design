@@ -12,5 +12,17 @@
 <br />
 
 
-<demo title="选择框" id="components-checkbox-demo-basic" src="./example/basic.vue" desc="默认为水平分割线，可在中间加入文字。"></demo>
+<demo title="基本用法" id="components-checkbox-demo-basic" src="./example/basic.vue" desc="简单的 checkbox。"></demo>
+
+
+<demo title="不可用" id="components-checkbox-demo-disabled" src="./example/disabled.vue" desc="checkbox 不可用。"></demo>
+
+
+<demo title="受控的 Checkbox" id="components-checkbox-demo-controller" src="./example/controller.vue" desc="联动 checkbox。"></demo>
+
+
+<demo title="Checkbox 组" id="components-checkbox-demo-group" src="./example/group.vue" desc="方便的从数组生成 Checkbox 组。"></demo>
+
+
+<demo title="Checkbox 组" id="components-checkbox-demo-indeterminate" src="./example/indeterminate.vue" desc="方便的从数组生成 Checkbox 组。"></demo>
 

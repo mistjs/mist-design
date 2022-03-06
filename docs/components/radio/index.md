@@ -23,3 +23,6 @@
 
 <demo title="单选组合" id="components-radio-demo-group-vertical" src="./example/group-vertical.vue" desc="一组互斥的 Radio 配合使用。"></demo>
 
+
+<demo title="单选组合" id="components-radio-demo-group-options" src="./example/group-options.vue" desc="一组互斥的 Radio 配合使用。"></demo>
+
