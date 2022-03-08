@@ -79,6 +79,12 @@ export const configProviderProps = {
     type: Object as PropType<{ autocomplete: string }>,
     default: undefined,
   },
+  getPopupContainer: {
+    type: Function as PropType<(triggerNode: HTMLElement) => HTMLElement>,
+  },
+  renderEmpty: {
+    type: Function as PropType<RenderEmptyHandler>,
+  },
 };
 
 export type ConfigProviderProps = Partial<ExtractPropTypes<typeof configProviderProps>>;
